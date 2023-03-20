@@ -13,6 +13,7 @@
 		053A0DBA29C4478500DB79B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053A0DB829C4478500DB79B4 /* Main.storyboard */; };
 		053A0DBC29C4478700DB79B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 053A0DBB29C4478700DB79B4 /* Assets.xcassets */; };
 		053A0DBF29C4478700DB79B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053A0DBD29C4478700DB79B4 /* LaunchScreen.storyboard */; };
+		05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		053A0DBB29C4478700DB79B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		053A0DBE29C4478700DB79B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		053A0DC029C4478700DB79B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				053A0DBB29C4478700DB79B4 /* Assets.xcassets */,
 				053A0DBD29C4478700DB79B4 /* LaunchScreen.storyboard */,
 				053A0DC029C4478700DB79B4 /* Info.plist */,
+				05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */,
 			);
 			path = "3178-Assignment";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
+				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
