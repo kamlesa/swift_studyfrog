@@ -13,6 +13,18 @@
 		053A0DBA29C4478500DB79B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053A0DB829C4478500DB79B4 /* Main.storyboard */; };
 		053A0DBC29C4478700DB79B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 053A0DBB29C4478700DB79B4 /* Assets.xcassets */; };
 		053A0DBF29C4478700DB79B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053A0DBD29C4478700DB79B4 /* LaunchScreen.storyboard */; };
+		0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */; };
+		0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542307129F26C01004DC6EE /* TasksTableViewController.swift */; };
+		0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542307329F26C0C004DC6EE /* ClassesTableViewController.swift */; };
+		0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */; };
+		0542307D29F2844B004DC6EE /* NewDeadlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542307C29F2844B004DC6EE /* NewDeadlineViewController.swift */; };
+		0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542307E29F28460004DC6EE /* GoogleCalendarViewController.swift */; };
+		0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308029F284A9004DC6EE /* NewClassViewController.swift */; };
+		0542308329F284C3004DC6EE /* NewSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308229F284C3004DC6EE /* NewSubjectViewController.swift */; };
+		0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308429F284D6004DC6EE /* ColourViewController.swift */; };
+		0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308629F284E2004DC6EE /* EditSubjectViewController.swift */; };
+		0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */; };
+		0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */; };
 		05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */; };
 		05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +38,18 @@
 		053A0DBB29C4478700DB79B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		053A0DBE29C4478700DB79B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		053A0DC029C4478700DB79B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
+		0542307129F26C01004DC6EE /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
+		0542307329F26C0C004DC6EE /* ClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesTableViewController.swift; sourceTree = "<group>"; };
+		0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewController.swift; sourceTree = "<group>"; };
+		0542307C29F2844B004DC6EE /* NewDeadlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineViewController.swift; sourceTree = "<group>"; };
+		0542307E29F28460004DC6EE /* GoogleCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarViewController.swift; sourceTree = "<group>"; };
+		0542308029F284A9004DC6EE /* NewClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassViewController.swift; sourceTree = "<group>"; };
+		0542308229F284C3004DC6EE /* NewSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubjectViewController.swift; sourceTree = "<group>"; };
+		0542308429F284D6004DC6EE /* ColourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourViewController.swift; sourceTree = "<group>"; };
+		0542308629F284E2004DC6EE /* EditSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubjectViewController.swift; sourceTree = "<group>"; };
+		0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAssessmentViewController.swift; sourceTree = "<group>"; };
+		0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewController.swift; sourceTree = "<group>"; };
 		05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
 		05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +84,7 @@
 		053A0DB129C4478500DB79B4 /* 3178-Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				0542307B29F283DF004DC6EE /* ViewControllers */,
 				053A0DB229C4478500DB79B4 /* AppDelegate.swift */,
 				053A0DB429C4478500DB79B4 /* SceneDelegate.swift */,
 				053A0DB629C4478500DB79B4 /* ViewController.swift */,
@@ -67,10 +92,29 @@
 				053A0DBB29C4478700DB79B4 /* Assets.xcassets */,
 				053A0DBD29C4478700DB79B4 /* LaunchScreen.storyboard */,
 				053A0DC029C4478700DB79B4 /* Info.plist */,
-				05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */,
-				05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */,
 			);
 			path = "3178-Assignment";
+			sourceTree = "<group>";
+		};
+		0542307B29F283DF004DC6EE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */,
+				05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */,
+				0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */,
+				0542307129F26C01004DC6EE /* TasksTableViewController.swift */,
+				0542307329F26C0C004DC6EE /* ClassesTableViewController.swift */,
+				0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */,
+				0542307C29F2844B004DC6EE /* NewDeadlineViewController.swift */,
+				0542307E29F28460004DC6EE /* GoogleCalendarViewController.swift */,
+				0542308029F284A9004DC6EE /* NewClassViewController.swift */,
+				0542308229F284C3004DC6EE /* NewSubjectViewController.swift */,
+				0542308429F284D6004DC6EE /* ColourViewController.swift */,
+				0542308629F284E2004DC6EE /* EditSubjectViewController.swift */,
+				0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */,
+				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,11 +188,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0542308329F284C3004DC6EE /* NewSubjectViewController.swift in Sources */,
+				0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */,
+				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
+				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
+				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
+				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
+				0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */,
+				0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */,
+				0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */,
+				0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */,
+				0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */,
+				0542307D29F2844B004DC6EE /* NewDeadlineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
