@@ -25,6 +25,19 @@
 		0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308629F284E2004DC6EE /* EditSubjectViewController.swift */; };
 		0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */; };
 		0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */; };
+		059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A712A04C49B009940E4 /* MulticastDelegate.swift */; };
+		059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */; };
+		059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */; };
+		059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A782A04C5E1009940E4 /* CoreDataController.swift */; };
+		059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A7A2A04C9BD009940E4 /* ToDo.swift */; };
+		059E3A962A04CE68009940E4 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */; };
+		059E3A9A2A04CE68009940E4 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A922A04CE68009940E4 /* Event+CoreDataClass.swift */; };
+		059E3A9B2A04CE68009940E4 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A932A04CE68009940E4 /* Event+CoreDataProperties.swift */; };
+		059E3AA32A04CEE1009940E4 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */; };
+		059E3AA42A04CEE1009940E4 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */; };
+		059E3AA52A04CEE1009940E4 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */; };
+		059E3AA62A04CEE1009940E4 /* Assessment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */; };
+		059E3AA72A04CEE1009940E4 /* Assessment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */; };
 		05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */; };
 		05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +63,19 @@
 		0542308629F284E2004DC6EE /* EditSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubjectViewController.swift; sourceTree = "<group>"; };
 		0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAssessmentViewController.swift; sourceTree = "<group>"; };
 		0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewController.swift; sourceTree = "<group>"; };
+		059E3A712A04C49B009940E4 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		059E3A762A04C599009940E4 /* StudyFrog-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StudyFrog-DataModel.xcdatamodel"; sourceTree = "<group>"; };
+		059E3A782A04C5E1009940E4 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		059E3A7A2A04C9BD009940E4 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		059E3A922A04CE68009940E4 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		059E3A932A04CE68009940E4 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
 		05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +110,8 @@
 		053A0DB129C4478500DB79B4 /* 3178-Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				059E3A702A04C477009940E4 /* Database */,
+				059E3A6F2A04C469009940E4 /* DataModel */,
 				0542307B29F283DF004DC6EE /* ViewControllers */,
 				053A0DB229C4478500DB79B4 /* AppDelegate.swift */,
 				053A0DB429C4478500DB79B4 /* SceneDelegate.swift */,
@@ -92,6 +120,7 @@
 				053A0DBB29C4478700DB79B4 /* Assets.xcassets */,
 				053A0DBD29C4478700DB79B4 /* LaunchScreen.storyboard */,
 				053A0DC029C4478700DB79B4 /* Info.plist */,
+				059E3A7A2A04C9BD009940E4 /* ToDo.swift */,
 			);
 			path = "3178-Assignment";
 			sourceTree = "<group>";
@@ -115,6 +144,32 @@
 				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		059E3A6F2A04C469009940E4 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */,
+				059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */,
+				059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */,
+				059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */,
+				059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */,
+				059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */,
+				059E3A922A04CE68009940E4 /* Event+CoreDataClass.swift */,
+				059E3A932A04CE68009940E4 /* Event+CoreDataProperties.swift */,
+				059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		059E3A702A04C477009940E4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				059E3A712A04C49B009940E4 /* MulticastDelegate.swift */,
+				059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */,
+				059E3A782A04C5E1009940E4 /* CoreDataController.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,23 +243,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059E3AA52A04CEE1009940E4 /* Subject+CoreDataProperties.swift in Sources */,
+				059E3A9B2A04CE68009940E4 /* Event+CoreDataProperties.swift in Sources */,
 				0542308329F284C3004DC6EE /* NewSubjectViewController.swift in Sources */,
+				059E3AA62A04CEE1009940E4 /* Assessment+CoreDataClass.swift in Sources */,
 				0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */,
 				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
+				059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */,
 				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
 				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
+				059E3A9A2A04CE68009940E4 /* Event+CoreDataClass.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
+				059E3AA42A04CEE1009940E4 /* Subject+CoreDataClass.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
+				059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */,
 				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
 				0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */,
+				059E3AA72A04CEE1009940E4 /* Assessment+CoreDataProperties.swift in Sources */,
 				0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */,
+				059E3A962A04CE68009940E4 /* Task+CoreDataClass.swift in Sources */,
 				0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */,
 				0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */,
 				0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */,
+				059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */,
+				059E3AA32A04CEE1009940E4 /* Task+CoreDataProperties.swift in Sources */,
 				0542307D29F2844B004DC6EE /* NewDeadlineViewController.swift in Sources */,
+				059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */,
+				059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +488,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				059E3A762A04C599009940E4 /* StudyFrog-DataModel.xcdatamodel */,
+			);
+			currentVersion = 059E3A762A04C599009940E4 /* StudyFrog-DataModel.xcdatamodel */;
+			path = "StudyFrog-DataModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 053A0DA729C4478500DB79B4 /* Project object */;
 }
