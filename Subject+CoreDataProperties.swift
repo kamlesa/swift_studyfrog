@@ -16,15 +16,15 @@ extension Subject {
         return NSFetchRequest<Subject>(entityName: "Subject")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var code: String?
     @NSManaged public var colour: Int32
     @NSManaged public var goal: Double
     @NSManaged public var grade: Double
+    @NSManaged public var name: String?
     @NSManaged public var assessments: NSSet?
-    @NSManaged public var tasks: NSSet?
     @NSManaged public var events: NSSet?
-    @NSManaged public var list: NSSet?
+    @NSManaged public var list: User?
+    @NSManaged public var tasks: NSSet?
 
 }
 
@@ -45,23 +45,6 @@ extension Subject {
 
 }
 
-// MARK: Generated accessors for tasks
-extension Subject {
-
-    @objc(addTasksObject:)
-    @NSManaged public func addToTasks(_ value: Task)
-
-    @objc(removeTasksObject:)
-    @NSManaged public func removeFromTasks(_ value: Task)
-
-    @objc(addTasks:)
-    @NSManaged public func addToTasks(_ values: NSSet)
-
-    @objc(removeTasks:)
-    @NSManaged public func removeFromTasks(_ values: NSSet)
-
-}
-
 // MARK: Generated accessors for events
 extension Subject {
 
@@ -76,6 +59,23 @@ extension Subject {
 
     @objc(removeEvents:)
     @NSManaged public func removeFromEvents(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for tasks
+extension Subject {
+
+    @objc(addTasksObject:)
+    @NSManaged public func addToTasks(_ value: Task)
+
+    @objc(removeTasksObject:)
+    @NSManaged public func removeFromTasks(_ value: Task)
+
+    @objc(addTasks:)
+    @NSManaged public func addToTasks(_ values: NSSet)
+
+    @objc(removeTasks:)
+    @NSManaged public func removeFromTasks(_ values: NSSet)
 
 }
 

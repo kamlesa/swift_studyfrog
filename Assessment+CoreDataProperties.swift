@@ -16,9 +16,9 @@ extension Assessment {
         return NSFetchRequest<Assessment>(entityName: "Assessment")
     }
 
-    @NSManaged public var worth: Double
     @NSManaged public var mark: Double
     @NSManaged public var name: String?
+    @NSManaged public var worth: Double
     @NSManaged public var subject: Subject?
 
 }

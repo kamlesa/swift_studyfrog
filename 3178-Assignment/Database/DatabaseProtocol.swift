@@ -5,6 +5,8 @@
 //  Created by Anika Kamleshwaran on 5/5/2023.
 //
 
+//TODO: NOT 100% SURE HOW THIS WILL BE SETUP .. . . .
+
 import Foundation
 
 enum DatabaseChange {
@@ -29,11 +31,11 @@ protocol DatabaseListener: AnyObject{
     
     func onSubjectsChange(change: DatabaseChange, subjects: [Subject])
     
-    func onSubjectChange(change: DatabaseChange, subjects: [Assessment])
+    func onSubjectChange(change: DatabaseChange, assessments: [Assessment])
 
-    func onTasksChange(change: DatabaseChange, subjects: [Task])
+    func onTasksChange(change: DatabaseChange, tasks: [Task])
 
-    func onEventsChange(change: DatabaseChange, subjects: [Event])
+    func onEventsChange(change: DatabaseChange, events: [Event])
     
 }
 
@@ -42,21 +44,28 @@ protocol DatabaseProtocol: AnyObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
     
-    
     //TODO: set up protocol
+    //TODO: set up the connection between subject and ass/task/event!?
+    //list:
+    var currentUser: User? {get set}
+    func addSubjectToList(subject: Subject, list: User) -> Bool
+    func addTaskToList(task: Task, list: User) -> Bool
+    func addEventToList(task: Event, list: User) -> Bool
+    
     //subject:
     func addSubject(name: String, code: String) -> Subject
-    func deleteSubject(assessment: Subject)
+    func deleteSubject(subject: Subject)
     
     //assessment:
-    func addAssessment(name: String, worth: Double, subject: Subject) -> Assessment
+    func addAssessment(name: String, worth: Double) -> Assessment
     func deleteAssessment(assessment: Assessment)
+    //func addAssessmentToSubject(assessment: Assessment, subject: Subject)
     
     //task:
     func addTask(name: String, subject: Subject) -> Task
     func deleteTask(task: Task)
     
     //event:
-    func addEvent(name: String, subject: Subject) -> Event
+    func addEvent(name: String, date: Date) -> Event
     func deleteEvent(event: Event)
 }

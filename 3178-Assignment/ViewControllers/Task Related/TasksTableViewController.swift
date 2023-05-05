@@ -7,9 +7,14 @@
 
 import UIKit
 
-class TasksTableViewController: UITableViewController {
+class TasksTableViewController: UITableViewController, DatabaseListener {
     
-    var tasks = ["","",""]
+    
+    
+    
+    weak var databaseController: DatabaseProtocol?
+    var taskList:[Task] = []
+    var listenerType = ListenerType.task
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +24,38 @@ class TasksTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    //MARK: - Database Listener
+    func onSubjectsChange(change: DatabaseChange, subjects: [Subject]) {
+        //do nothing
+    }
+    
+    func onSubjectChange(change: DatabaseChange, assessments: [Assessment]) {
+        //do nothing
+
+    }
+    
+    func onTasksChange(change: DatabaseChange, tasks: [Task]) {
+        taskList = tasks
+        tableView.reloadData()
+    }
+    
+    func onEventsChange(change: DatabaseChange, events: [Event]) {
+        //do nothing
+
     }
 
     // MARK: - Table view data source
@@ -30,15 +67,18 @@ class TasksTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tasks.count
+        return taskList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
+        
         // Configure the cell...
-
+        //var content = cell.defaultContentConfiguration()
+        cell.subjectLabel.text = "Test"//taskList[indexPath.row].subject?.name
+        cell.taskLabel.text = taskList[indexPath.row].name
+        cell.completionSlider.value = 0
         return cell
     }
     
@@ -54,17 +94,20 @@ class TasksTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let task = taskList[indexPath.row]
+            databaseController?.deleteTask(task: task)
+            //tableView.reloadData()
+            //tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

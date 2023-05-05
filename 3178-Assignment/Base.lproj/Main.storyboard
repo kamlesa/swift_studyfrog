@@ -697,7 +697,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="111" id="unH-P1-o8e">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="111" id="unH-P1-o8e" customClass="TaskCell" customModule="_178_Assignment" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="unH-P1-o8e" id="1nC-xx-npn">
@@ -713,6 +713,9 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkF-tO-Chj">
                                             <rect key="frame" x="28" y="66" width="337" height="31"/>
                                             <color key="tintColor" name="DefaultOrange"/>
+                                            <connections>
+                                                <action selector="completionSlider:" destination="unH-P1-o8e" eventType="valueChanged" id="2LH-3s-nB2"/>
+                                            </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="complete lab work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dg-Zt-v64">
                                             <rect key="frame" x="30" y="32" width="160.33333333333334" height="24"/>
@@ -728,6 +731,7 @@
                                                 <color key="baseForegroundColor" systemColor="labelColor"/>
                                             </buttonConfiguration>
                                             <connections>
+                                                <action selector="updateDeadline:" destination="unH-P1-o8e" eventType="touchUpInside" id="2Q0-od-oia"/>
                                                 <segue destination="W7K-5Z-RsA" kind="show" identifier="newDeadline" id="W24-F3-b97"/>
                                             </connections>
                                         </button>
@@ -745,6 +749,11 @@
                                         <constraint firstItem="4dg-Zt-v64" firstAttribute="leading" secondItem="1nC-xx-npn" secondAttribute="leadingMargin" constant="10" id="h8q-jw-ayp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="completionSlider" destination="mkF-tO-Chj" id="G69-0M-mhz"/>
+                                    <outlet property="subjectLabel" destination="gcE-k3-akG" id="Tab-1z-VLk"/>
+                                    <outlet property="taskLabel" destination="4dg-Zt-v64" id="fhs-09-Fr4"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell2" rowHeight="111" id="Yvf-Xv-yuT">
                                 <rect key="frame" x="0.0" y="161" width="393" height="111"/>
@@ -1760,7 +1769,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="T37-Cb-MCM"/>
+        <segue reference="cid-OO-hbX"/>
         <segue reference="Q6b-FE-CgU"/>
     </inferredMetricsTieBreakers>
     <resources>

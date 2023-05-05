@@ -30,17 +30,18 @@
 		059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */; };
 		059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A782A04C5E1009940E4 /* CoreDataController.swift */; };
 		059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A7A2A04C9BD009940E4 /* ToDo.swift */; };
-		059E3A962A04CE68009940E4 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */; };
-		059E3A9A2A04CE68009940E4 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A922A04CE68009940E4 /* Event+CoreDataClass.swift */; };
-		059E3A9B2A04CE68009940E4 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A932A04CE68009940E4 /* Event+CoreDataProperties.swift */; };
-		059E3AA32A04CEE1009940E4 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */; };
-		059E3AA42A04CEE1009940E4 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */; };
-		059E3AA52A04CEE1009940E4 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */; };
-		059E3AA62A04CEE1009940E4 /* Assessment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */; };
-		059E3AA72A04CEE1009940E4 /* Assessment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */; };
-		059E3AAA2A04D32C009940E4 /* SubjectList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA82A04D32B009940E4 /* SubjectList+CoreDataClass.swift */; };
-		059E3AAB2A04D32C009940E4 /* SubjectList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA92A04D32C009940E4 /* SubjectList+CoreDataProperties.swift */; };
 		05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */; };
+		05D463AD2A04D63A00197A84 /* Assessment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */; };
+		05D463AE2A04D63A00197A84 /* Assessment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A42A04D63900197A84 /* Assessment+CoreDataProperties.swift */; };
+		05D463B12A04D63A00197A84 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A72A04D63900197A84 /* Event+CoreDataClass.swift */; };
+		05D463B22A04D63A00197A84 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */; };
+		05D463B32A04D63A00197A84 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */; };
+		05D463B42A04D63A00197A84 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */; };
+		05D463B52A04D63A00197A84 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AB2A04D63A00197A84 /* Task+CoreDataClass.swift */; };
+		05D463B62A04D63A00197A84 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AC2A04D63A00197A84 /* Task+CoreDataProperties.swift */; };
+		05D463BD2A04E9DB00197A84 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */; };
+		05D463BE2A04E9DB00197A84 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */; };
+		05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463C22A04ED3B00197A84 /* TaskCell.swift */; };
 		05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,17 +71,18 @@
 		059E3A762A04C599009940E4 /* StudyFrog-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StudyFrog-DataModel.xcdatamodel"; sourceTree = "<group>"; };
 		059E3A782A04C5E1009940E4 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		059E3A7A2A04C9BD009940E4 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
-		059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		059E3A922A04CE68009940E4 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
-		059E3A932A04CE68009940E4 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		059E3AA82A04D32B009940E4 /* SubjectList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubjectList+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		059E3AA92A04D32C009940E4 /* SubjectList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubjectList+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
+		05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		05D463A42A04D63900197A84 /* Assessment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		05D463A72A04D63900197A84 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		05D463AB2A04D63A00197A84 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		05D463AC2A04D63A00197A84 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05D463C22A04ED3B00197A84 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,19 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */,
-				05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */,
-				0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */,
-				0542307129F26C01004DC6EE /* TasksTableViewController.swift */,
-				0542307329F26C0C004DC6EE /* ClassesTableViewController.swift */,
-				0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */,
-				0542307C29F2844B004DC6EE /* NewDeadlineViewController.swift */,
-				0542307E29F28460004DC6EE /* GoogleCalendarViewController.swift */,
-				0542308029F284A9004DC6EE /* NewClassViewController.swift */,
-				0542308229F284C3004DC6EE /* NewSubjectViewController.swift */,
 				0542308429F284D6004DC6EE /* ColourViewController.swift */,
-				0542308629F284E2004DC6EE /* EditSubjectViewController.swift */,
-				0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */,
-				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
+				05D463C12A04EBC400197A84 /* Task Related */,
+				05D463C02A04EBA400197A84 /* Event Related */,
+				05D463BF2A04EB7000197A84 /* Subject Related */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -153,16 +146,16 @@
 		059E3A6F2A04C469009940E4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				059E3AA82A04D32B009940E4 /* SubjectList+CoreDataClass.swift */,
-				059E3AA92A04D32C009940E4 /* SubjectList+CoreDataProperties.swift */,
-				059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */,
-				059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */,
-				059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */,
-				059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */,
-				059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */,
-				059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */,
-				059E3A922A04CE68009940E4 /* Event+CoreDataClass.swift */,
-				059E3A932A04CE68009940E4 /* Event+CoreDataProperties.swift */,
+				05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */,
+				05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */,
+				05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */,
+				05D463A42A04D63900197A84 /* Assessment+CoreDataProperties.swift */,
+				05D463A72A04D63900197A84 /* Event+CoreDataClass.swift */,
+				05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */,
+				05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */,
+				05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */,
+				05D463AB2A04D63A00197A84 /* Task+CoreDataClass.swift */,
+				05D463AC2A04D63A00197A84 /* Task+CoreDataProperties.swift */,
 				059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */,
 			);
 			path = DataModel;
@@ -176,6 +169,40 @@
 				059E3A782A04C5E1009940E4 /* CoreDataController.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		05D463BF2A04EB7000197A84 /* Subject Related */ = {
+			isa = PBXGroup;
+			children = (
+				0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */,
+				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
+				0542308229F284C3004DC6EE /* NewSubjectViewController.swift */,
+				0542308629F284E2004DC6EE /* EditSubjectViewController.swift */,
+				0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */,
+				0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */,
+			);
+			path = "Subject Related";
+			sourceTree = "<group>";
+		};
+		05D463C02A04EBA400197A84 /* Event Related */ = {
+			isa = PBXGroup;
+			children = (
+				0542307329F26C0C004DC6EE /* ClassesTableViewController.swift */,
+				0542308029F284A9004DC6EE /* NewClassViewController.swift */,
+				0542307E29F28460004DC6EE /* GoogleCalendarViewController.swift */,
+			);
+			path = "Event Related";
+			sourceTree = "<group>";
+		};
+		05D463C12A04EBC400197A84 /* Task Related */ = {
+			isa = PBXGroup;
+			children = (
+				0542307129F26C01004DC6EE /* TasksTableViewController.swift */,
+				05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */,
+				0542307C29F2844B004DC6EE /* NewDeadlineViewController.swift */,
+				05D463C22A04ED3B00197A84 /* TaskCell.swift */,
+			);
+			path = "Task Related";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,35 +276,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				059E3AA52A04CEE1009940E4 /* Subject+CoreDataProperties.swift in Sources */,
-				059E3A9B2A04CE68009940E4 /* Event+CoreDataProperties.swift in Sources */,
 				0542308329F284C3004DC6EE /* NewSubjectViewController.swift in Sources */,
-				059E3AA62A04CEE1009940E4 /* Assessment+CoreDataClass.swift in Sources */,
 				0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */,
 				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
-				059E3AAB2A04D32C009940E4 /* SubjectList+CoreDataProperties.swift in Sources */,
+				05D463B32A04D63A00197A84 /* Subject+CoreDataClass.swift in Sources */,
 				059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */,
+				05D463B62A04D63A00197A84 /* Task+CoreDataProperties.swift in Sources */,
+				05D463B42A04D63A00197A84 /* Subject+CoreDataProperties.swift in Sources */,
+				05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */,
 				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
 				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
-				059E3A9A2A04CE68009940E4 /* Event+CoreDataClass.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
-				059E3AA42A04CEE1009940E4 /* Subject+CoreDataClass.swift in Sources */,
+				05D463B22A04D63A00197A84 /* Event+CoreDataProperties.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
+				05D463B12A04D63A00197A84 /* Event+CoreDataClass.swift in Sources */,
 				059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */,
 				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
+				05D463BE2A04E9DB00197A84 /* User+CoreDataProperties.swift in Sources */,
 				0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */,
-				059E3AAA2A04D32C009940E4 /* SubjectList+CoreDataClass.swift in Sources */,
-				059E3AA72A04CEE1009940E4 /* Assessment+CoreDataProperties.swift in Sources */,
+				05D463BD2A04E9DB00197A84 /* User+CoreDataClass.swift in Sources */,
 				0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */,
-				059E3A962A04CE68009940E4 /* Task+CoreDataClass.swift in Sources */,
+				05D463AE2A04D63A00197A84 /* Assessment+CoreDataProperties.swift in Sources */,
+				05D463B52A04D63A00197A84 /* Task+CoreDataClass.swift in Sources */,
 				0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */,
 				0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */,
+				05D463AD2A04D63A00197A84 /* Assessment+CoreDataClass.swift in Sources */,
 				0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */,
 				059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */,
-				059E3AA32A04CEE1009940E4 /* Task+CoreDataProperties.swift in Sources */,
 				0542307D29F2844B004DC6EE /* NewDeadlineViewController.swift in Sources */,
 				059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */,
 				059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */,
@@ -429,6 +457,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "3178-Assignment/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -456,6 +485,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "3178-Assignment/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

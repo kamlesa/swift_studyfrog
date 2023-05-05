@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-//TODO: add generated access :)
 
 extension Event {
 
@@ -17,10 +16,12 @@ extension Event {
         return NSFetchRequest<Event>(entityName: "Event")
     }
 
-    @NSManaged public var type: Int32
     @NSManaged public var date: Date?
     @NSManaged public var recurrence: Bool
+    @NSManaged public var type: Int32
     @NSManaged public var subject: Subject?
+    @NSManaged public var list: User?
+    @NSManaged public var name: String
 
 }
 
