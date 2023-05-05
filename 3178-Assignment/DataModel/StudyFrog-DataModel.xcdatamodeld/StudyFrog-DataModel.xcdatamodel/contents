@@ -20,7 +20,12 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="assessments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Assessment" inverseName="subject" inverseEntity="Assessment"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="subject" inverseEntity="Event"/>
+        <relationship name="list" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="list" inverseEntity="Subject"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="subject" inverseEntity="Task"/>
+    </entity>
+    <entity name="SubjectList" representedClassName="SubjectList" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

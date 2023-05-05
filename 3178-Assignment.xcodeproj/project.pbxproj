@@ -38,6 +38,8 @@
 		059E3AA52A04CEE1009940E4 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */; };
 		059E3AA62A04CEE1009940E4 /* Assessment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */; };
 		059E3AA72A04CEE1009940E4 /* Assessment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */; };
+		059E3AAA2A04D32C009940E4 /* SubjectList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA82A04D32B009940E4 /* SubjectList+CoreDataClass.swift */; };
+		059E3AAB2A04D32C009940E4 /* SubjectList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3AA92A04D32C009940E4 /* SubjectList+CoreDataProperties.swift */; };
 		05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */; };
 		05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +78,8 @@
 		059E3A9F2A04CEE1009940E4 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		059E3AA02A04CEE1009940E4 /* Assessment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		059E3AA12A04CEE1009940E4 /* Assessment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		059E3AA82A04D32B009940E4 /* SubjectList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubjectList+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		059E3AA92A04D32C009940E4 /* SubjectList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubjectList+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
 		05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +153,8 @@
 		059E3A6F2A04C469009940E4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				059E3AA82A04D32B009940E4 /* SubjectList+CoreDataClass.swift */,
+				059E3AA92A04D32C009940E4 /* SubjectList+CoreDataProperties.swift */,
 				059E3A9D2A04CEE1009940E4 /* Task+CoreDataProperties.swift */,
 				059E3A8E2A04CE68009940E4 /* Task+CoreDataClass.swift */,
 				059E3A9E2A04CEE1009940E4 /* Subject+CoreDataClass.swift */,
@@ -249,6 +255,7 @@
 				059E3AA62A04CEE1009940E4 /* Assessment+CoreDataClass.swift in Sources */,
 				0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */,
 				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
+				059E3AAB2A04D32C009940E4 /* SubjectList+CoreDataProperties.swift in Sources */,
 				059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */,
 				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
@@ -262,6 +269,7 @@
 				059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */,
 				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
 				0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */,
+				059E3AAA2A04D32C009940E4 /* SubjectList+CoreDataClass.swift in Sources */,
 				059E3AA72A04CEE1009940E4 /* Assessment+CoreDataProperties.swift in Sources */,
 				0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */,
 				059E3A962A04CE68009940E4 /* Task+CoreDataClass.swift in Sources */,

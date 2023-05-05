@@ -24,6 +24,7 @@ extension Subject {
     @NSManaged public var assessments: NSSet?
     @NSManaged public var tasks: NSSet?
     @NSManaged public var events: NSSet?
+    @NSManaged public var list: NSSet?
 
 }
 
