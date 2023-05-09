@@ -25,6 +25,9 @@
 		0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308629F284E2004DC6EE /* EditSubjectViewController.swift */; };
 		0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */; };
 		0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */; };
+		054692212A09FC5700168C60 /* QuoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054692202A09FC5700168C60 /* QuoteData.swift */; };
+		054692242A09FCFA00168C60 /* Quote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */; };
+		054692252A09FCFA00168C60 /* Quote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */; };
 		059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A712A04C49B009940E4 /* MulticastDelegate.swift */; };
 		059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */; };
 		059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */; };
@@ -37,8 +40,8 @@
 		05D463B22A04D63A00197A84 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */; };
 		05D463B32A04D63A00197A84 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */; };
 		05D463B42A04D63A00197A84 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */; };
-		05D463B52A04D63A00197A84 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AB2A04D63A00197A84 /* Task+CoreDataClass.swift */; };
-		05D463B62A04D63A00197A84 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AC2A04D63A00197A84 /* Task+CoreDataProperties.swift */; };
+		05D463B52A04D63A00197A84 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AB2A04D63A00197A84 /* ToDo+CoreDataClass.swift */; };
+		05D463B62A04D63A00197A84 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AC2A04D63A00197A84 /* ToDo+CoreDataProperties.swift */; };
 		05D463BD2A04E9DB00197A84 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */; };
 		05D463BE2A04E9DB00197A84 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */; };
 		05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463C22A04ED3B00197A84 /* TaskCell.swift */; };
@@ -66,6 +69,9 @@
 		0542308629F284E2004DC6EE /* EditSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubjectViewController.swift; sourceTree = "<group>"; };
 		0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAssessmentViewController.swift; sourceTree = "<group>"; };
 		0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewController.swift; sourceTree = "<group>"; };
+		054692202A09FC5700168C60 /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
+		054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+CoreDataClass.swift"; sourceTree = "<group>"; };
+		054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		059E3A712A04C49B009940E4 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		059E3A762A04C599009940E4 /* StudyFrog-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StudyFrog-DataModel.xcdatamodel"; sourceTree = "<group>"; };
@@ -78,8 +84,8 @@
 		05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		05D463AB2A04D63A00197A84 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		05D463AC2A04D63A00197A84 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		05D463AB2A04D63A00197A84 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		05D463AC2A04D63A00197A84 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05D463C22A04ED3B00197A84 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */,
+				054692202A09FC5700168C60 /* QuoteData.swift */,
 				0542308429F284D6004DC6EE /* ColourViewController.swift */,
 				05D463C12A04EBC400197A84 /* Task Related */,
 				05D463C02A04EBA400197A84 /* Event Related */,
@@ -146,6 +153,8 @@
 		059E3A6F2A04C469009940E4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */,
+				054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */,
 				05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */,
 				05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */,
 				05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */,
@@ -154,8 +163,8 @@
 				05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */,
 				05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */,
 				05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */,
-				05D463AB2A04D63A00197A84 /* Task+CoreDataClass.swift */,
-				05D463AC2A04D63A00197A84 /* Task+CoreDataProperties.swift */,
+				05D463AB2A04D63A00197A84 /* ToDo+CoreDataClass.swift */,
+				05D463AC2A04D63A00197A84 /* ToDo+CoreDataProperties.swift */,
 				059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */,
 			);
 			path = DataModel;
@@ -276,16 +285,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054692212A09FC5700168C60 /* QuoteData.swift in Sources */,
 				0542308329F284C3004DC6EE /* NewSubjectViewController.swift in Sources */,
 				0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */,
 				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
 				05D463B32A04D63A00197A84 /* Subject+CoreDataClass.swift in Sources */,
 				059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */,
-				05D463B62A04D63A00197A84 /* Task+CoreDataProperties.swift in Sources */,
+				054692252A09FCFA00168C60 /* Quote+CoreDataProperties.swift in Sources */,
+				05D463B62A04D63A00197A84 /* ToDo+CoreDataProperties.swift in Sources */,
 				05D463B42A04D63A00197A84 /* Subject+CoreDataProperties.swift in Sources */,
 				05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */,
 				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
+				054692242A09FCFA00168C60 /* Quote+CoreDataClass.swift in Sources */,
 				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
 				05D463B22A04D63A00197A84 /* Event+CoreDataProperties.swift in Sources */,
@@ -300,7 +312,7 @@
 				05D463BD2A04E9DB00197A84 /* User+CoreDataClass.swift in Sources */,
 				0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */,
 				05D463AE2A04D63A00197A84 /* Assessment+CoreDataProperties.swift in Sources */,
-				05D463B52A04D63A00197A84 /* Task+CoreDataClass.swift in Sources */,
+				05D463B52A04D63A00197A84 /* ToDo+CoreDataClass.swift in Sources */,
 				0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */,
 				0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */,
 				05D463AD2A04D63A00197A84 /* Assessment+CoreDataClass.swift in Sources */,

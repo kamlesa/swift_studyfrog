@@ -10,10 +10,9 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var inspoQuoteLabel: UILabel!
     @IBOutlet weak var dueDateTableView: UITableView!
     @IBOutlet weak var taskTableView: UITableView!
-    
+    @IBOutlet weak var inspoQuoteTextView: UITextView!
     
     
     
@@ -22,9 +21,58 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         imageView.image = UIImage(named: "frogBanner")
+        inspoQuoteTextView.isEditable = false
+        inspoQuoteTextView.text = "TESTING 123"
+        inspoQuoteTextView.textAlignment = NSTextAlignment.center
+        //indicator.startAnimating()
+        callAsync()
     }
     
-
+    // MARK: - Quotes API
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //await requestQuote()
+    }
+    
+    func callAsync() {
+        let _ = Task {
+            await requestQuote()
+        }
+    }
+    
+    func requestQuote() async {
+        //https://api.goprogram.ai/inspiration
+        print("Quote is being Requested!")
+        var searchURLComponents = URLComponents()
+        searchURLComponents.scheme = "https"
+        searchURLComponents.host = "api.goprogram.ai"
+        searchURLComponents.path = "/inspiration"
+        
+        guard let requestURL = searchURLComponents.url else {
+            print("Invalid URL")
+            return
+        }
+        
+        let urlRequest = URLRequest(url: requestURL)
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            let decoder = JSONDecoder()
+            let quoteData = try decoder.decode(QuoteData.self, from: data)
+            let quote = quoteData.quote
+            var textInput = quote
+            if let author = quoteData.author {
+                textInput = textInput + "\n - " + author
+            }
+            inspoQuoteTextView.text = textInput
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
