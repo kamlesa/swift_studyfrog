@@ -21,7 +21,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     //TODO: insert the "     var teamHeroesFetchedResultsController: NSFetchedResultsController<Superhero>? " stuff....?
     var subjectsFetchedResultsController: NSFetchedResultsController<Subject>?
-    var tasksFetchedResultsController: NSFetchedResultsController<Task>?
+    var tasksFetchedResultsController: NSFetchedResultsController<ToDo>?
 
     //FATAL ERROR = BAD???
     override init() {
@@ -35,15 +35,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         super.init()
         cleanup()
-        //deleteData()
-//        let fetchRequest = NSFetchRequest(entityName: "Task")
-//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//        do {
-//            try persistentContainer.execute(deleteRequest, with: )
-//        }
-//
         if fetchSubjects().count == 0{
-            //createDefaultTasks() //TODO: REMOVE WHEN WORKING!
+            createDefaultTasks() //TODO: REMOVE WHEN WORKING!
         }
     }
     
@@ -91,7 +84,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return false
     }
     
-    func addTaskToList(task: Task, list: User) -> Bool {
+    func addTaskToList(task: ToDo, list: User) -> Bool {
         //TODO
         return false
     }
@@ -125,13 +118,13 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         persistentContainer.viewContext.delete(assessment)
     }
     
-    func addTask(name: String, subject: Subject) -> Task {
-        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: persistentContainer.viewContext) as! Task
+    func addTask(name: String, subject: Subject) -> ToDo {
+        let task = NSEntityDescription.insertNewObject(forEntityName: "ToDo", into: persistentContainer.viewContext) as! ToDo
         task.name = name
         return task
     }
     
-    func deleteTask(task: Task) {
+    func deleteTask(task: ToDo) {
         persistentContainer.viewContext.delete(task)
     }
     
@@ -169,12 +162,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return subjects
     }
     
-    func fetchTasks() -> [Task] {
+    func fetchTasks() -> [ToDo] {
         if tasksFetchedResultsController == nil {
-            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+            let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
             let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
-            tasksFetchedResultsController = NSFetchedResultsController<Task>(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            tasksFetchedResultsController = NSFetchedResultsController<ToDo>(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
             tasksFetchedResultsController?.delegate = self
             
             do {
@@ -184,7 +177,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
             }
         }
         
-        var tasks = [Task]()
+        var tasks = [ToDo]()
         if tasksFetchedResultsController?.fetchedObjects != nil {
             tasks = (tasksFetchedResultsController?.fetchedObjects)!
         }
@@ -205,26 +198,11 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func createDefaultTasks() {
         let default_subject = addSubject(name: "iOS App Dev", code: "FIT3178")
-        let _ = addTask(name: "research", subject: default_subject)
-        let _ = addTask(name: "update UI", subject: default_subject)
-        let _ = addTask(name: "watch pre-workshop videos", subject: default_subject)
+        let _ = addTask(name: "research 1", subject: default_subject)
+        let _ = addTask(name: "update UI 2", subject: default_subject)
+        let _ = addTask(name: "watch pre-workshop videos 3", subject: default_subject)
+        let _ = addTask(name: "test", subject: default_subject)
         cleanup()
     }
     
-    func deleteData() {
-        let appDel:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        let context:NSManagedObjectContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Subject")
-        fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let results = try context.fetch(fetchRequest)
-            for managedObject in results {
-                if let managedObjectData: NSManagedObject = managedObject as? NSManagedObject {
-                    context.delete(managedObjectData)
-                }
-            }
-        } catch let error as NSError {
-            print("Deleted all my data in myEntity error : \(error) \(error.userInfo)")
-        }
-    }
 }

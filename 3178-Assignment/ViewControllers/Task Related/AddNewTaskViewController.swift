@@ -11,15 +11,19 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
 
     
     
+    @IBOutlet weak var taskDeadlinePicker: UIDatePicker!
+    @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskSubjectPicker: UIPickerView!
     var pickerData: [String] = [String]()
-    
+    weak var databaseController: DatabaseProtocol?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
         taskSubjectPicker.dataSource = self
         taskSubjectPicker.delegate = self
         
@@ -27,7 +31,21 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
         
     }
     
-
+    @IBAction func addTask(_ sender: Any) {
+        guard let name = taskName.text else{
+            displayMessage(title: "Eror", message: "Please Enter a Task Name")
+            return
+        }
+        if name == ""{
+            displayMessage(title: "Eror", message: "Please Enter a Task Name")
+            return
+        }
+        let subject = (databaseController?.addSubject(name: "POOP", code: "FIT2002"))!
+        
+        databaseController?.addTask(name: name, subject: subject)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -56,6 +74,16 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
         // The data to return fopr the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
             return pickerData[row]
+    }
+    
+    
+    func displayMessage(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title:"Dismiss",style:.default,handler:nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
     }
 
 }

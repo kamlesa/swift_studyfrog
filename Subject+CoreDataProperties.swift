@@ -66,10 +66,10 @@ extension Subject {
 extension Subject {
 
     @objc(addTasksObject:)
-    @NSManaged public func addToTasks(_ value: Task)
+    @NSManaged public func addToTasks(_ value: ToDo)
 
     @objc(removeTasksObject:)
-    @NSManaged public func removeFromTasks(_ value: Task)
+    @NSManaged public func removeFromTasks(_ value: ToDo)
 
     @objc(addTasks:)
     @NSManaged public func addToTasks(_ values: NSSet)

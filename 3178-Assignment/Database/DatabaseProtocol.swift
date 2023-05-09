@@ -33,7 +33,7 @@ protocol DatabaseListener: AnyObject{
     
     func onSubjectChange(change: DatabaseChange, assessments: [Assessment])
 
-    func onTasksChange(change: DatabaseChange, tasks: [Task])
+    func onTasksChange(change: DatabaseChange, tasks: [ToDo])
 
     func onEventsChange(change: DatabaseChange, events: [Event])
     
@@ -49,7 +49,7 @@ protocol DatabaseProtocol: AnyObject {
     //list:
     var currentUser: User? {get set}
     func addSubjectToList(subject: Subject, list: User) -> Bool
-    func addTaskToList(task: Task, list: User) -> Bool
+    func addTaskToList(task: ToDo, list: User) -> Bool
     func addEventToList(task: Event, list: User) -> Bool
     
     //subject:
@@ -62,8 +62,8 @@ protocol DatabaseProtocol: AnyObject {
     //func addAssessmentToSubject(assessment: Assessment, subject: Subject)
     
     //task:
-    func addTask(name: String, subject: Subject) -> Task
-    func deleteTask(task: Task)
+    func addTask(name: String, subject: Subject) -> ToDo
+    func deleteTask(task: ToDo)
     
     //event:
     func addEvent(name: String, date: Date) -> Event

@@ -46,7 +46,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
         // do nothing
     }
     
-    func onTasksChange(change: DatabaseChange, tasks: [Task]) {
+    func onTasksChange(change: DatabaseChange, tasks: [ToDo]) {
         // do nothing
     }
     

@@ -13,7 +13,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
     
     
     weak var databaseController: DatabaseProtocol?
-    var taskList:[Task] = []
+    var taskList:[ToDo] = []
     var listenerType = ListenerType.task
 
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
 
     }
     
-    func onTasksChange(change: DatabaseChange, tasks: [Task]) {
+    func onTasksChange(change: DatabaseChange, tasks: [ToDo]) {
         taskList = tasks
         tableView.reloadData()
     }
@@ -79,6 +79,9 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
         cell.subjectLabel.text = "Test"//taskList[indexPath.row].subject?.name
         cell.taskLabel.text = taskList[indexPath.row].name
         cell.completionSlider.value = 0
+        cell.completionSlider.minimumValue = 0
+        cell.completionSlider.maximumValue = 100
+        
         return cell
     }
     

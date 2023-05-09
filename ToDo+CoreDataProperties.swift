@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Task {
+extension ToDo {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Task> {
-        return NSFetchRequest<Task>(entityName: "Task")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ToDo> {
+        return NSFetchRequest<ToDo>(entityName: "ToDo")
     }
 
     @NSManaged public var deadline: Date?
@@ -23,6 +23,6 @@ extension Task {
 
 }
 
-extension Task : Identifiable {
+extension ToDo : Identifiable {
 
 }
