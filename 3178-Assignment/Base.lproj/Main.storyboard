@@ -279,26 +279,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="complete lab work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1G-AM-aaT">
-                                <rect key="frame" x="20" y="113" width="353" height="34"/>
+                                <rect key="frame" x="20" y="69" width="353" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Deadline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbW-Hx-lQR">
-                                <rect key="frame" x="20" y="167" width="353" height="21"/>
+                                <rect key="frame" x="20" y="123" width="353" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="36j-Do-raT">
-                                <rect key="frame" x="36" y="197.99999999999997" width="321" height="307.33333333333326"/>
+                                <rect key="frame" x="36" y="153.99999999999997" width="321" height="307.33333333333326"/>
                                 <color key="tintColor" name="DefaultRed"/>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="700999200">
                                     <!--2023-03-20 10:00:00 +0000-->
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAZ-OY-QSh">
-                                <rect key="frame" x="20" y="705" width="353" height="44"/>
+                                <rect key="frame" x="20" y="754" width="353" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="cet-S1-Nh0"/>
                                 </constraints>
@@ -717,7 +717,7 @@
                                             <rect key="frame" x="28" y="66" width="337" height="31"/>
                                             <color key="tintColor" name="DefaultOrange"/>
                                             <connections>
-                                                <action selector="completionSlider:" destination="unH-P1-o8e" eventType="valueChanged" id="2LH-3s-nB2"/>
+                                                <action selector="sliderChange:" destination="unH-P1-o8e" eventType="valueChanged" id="oKw-Wx-HM0"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="complete lab work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dg-Zt-v64">
@@ -733,10 +733,6 @@
                                             <buttonConfiguration key="configuration" style="filled" title="Tomorrow">
                                                 <color key="baseForegroundColor" systemColor="labelColor"/>
                                             </buttonConfiguration>
-                                            <connections>
-                                                <action selector="updateDeadline:" destination="unH-P1-o8e" eventType="touchUpInside" id="2Q0-od-oia"/>
-                                                <segue destination="W7K-5Z-RsA" kind="show" identifier="newDeadline" id="W24-F3-b97"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -991,7 +987,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Subject" style="editor" id="lWe-7W-T6e"/>
                     <connections>
-                        <segue destination="7aC-H6-bEV" kind="show" id="T37-Cb-MCM"/>
+                        <segue destination="7aC-H6-bEV" kind="show" identifier="customColourEdit" id="T37-Cb-MCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWO-2P-hQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1015,12 +1011,21 @@
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Lr-d7-KrL">
                                 <rect key="frame" x="18" y="526" width="357" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="7aC-H6-bEV" eventType="valueChanged" id="d2X-wa-YOs"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jdm-If-yEi">
                                 <rect key="frame" x="18" y="364" width="357" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="7aC-H6-bEV" eventType="valueChanged" id="Emh-ec-Dhx"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FJT-WB-rAg">
                                 <rect key="frame" x="18" y="445" width="357" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="7aC-H6-bEV" eventType="valueChanged" id="6Xm-Xw-YcP"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green Slider:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="613-kW-9NZ">
                                 <rect key="frame" x="20" y="414" width="353" height="21"/>
@@ -1068,6 +1073,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Subject Colour" id="Z2F-BR-7Rs"/>
+                    <connections>
+                        <outlet property="blueSlider" destination="4Lr-d7-KrL" id="RHo-cV-rTD"/>
+                        <outlet property="colourView" destination="b9X-z6-XZ9" id="MnD-b0-7yv"/>
+                        <outlet property="greenSlider" destination="FJT-WB-rAg" id="iyC-Ua-ZjQ"/>
+                        <outlet property="redSlider" destination="jdm-If-yEi" id="ddf-v4-ON6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd9-fo-q9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1287,7 +1298,7 @@
                         <outlet property="subjectColour" destination="wHK-Gx-R1v" id="K0E-31-i0N"/>
                         <outlet property="subjectColourView" destination="BQa-vY-zqw" id="nLu-CU-F8z"/>
                         <outlet property="subjectNameField" destination="edm-Dh-RyN" id="SDA-SY-oVz"/>
-                        <segue destination="7aC-H6-bEV" kind="show" id="cid-OO-hbX"/>
+                        <segue destination="7aC-H6-bEV" kind="show" identifier="customColour" id="cid-OO-hbX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyB-bD-IrR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1783,7 +1794,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cid-OO-hbX"/>
+        <segue reference="T37-Cb-MCM"/>
         <segue reference="DBP-OZ-0kG"/>
     </inferredMetricsTieBreakers>
     <resources>

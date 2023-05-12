@@ -7,7 +7,24 @@
 
 import UIKit
 
-class TasksTableViewController: UITableViewController, DatabaseListener {
+class TasksTableViewController: UITableViewController, DatabaseListener, TaskCellDelegate {
+    
+    func taskComplete(_ placeholder: String) -> Bool {
+        var result = false
+        let alertController = UIAlertController(title: "Have you completed this Task?", message: "Task Info: --- ", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
+            result = true
+        }))
+        alertController.addAction(UIAlertAction(title: "No!", style: .default, handler: nil))
+        /*
+         
+         = UIAlertController(title: title, message: message, preferredStyle: .alert)
+         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+         self.present(alertController, animated: true, completion: nil)
+         */
+        return result
+    }
+    
     
     
     
@@ -15,6 +32,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
     weak var databaseController: DatabaseProtocol?
     var taskList:[ToDo] = []
     var listenerType = ListenerType.task
+    var rowHeight = 100
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +89,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
     }
 
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
         
@@ -86,7 +105,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 100
     }
 
     /*
@@ -97,7 +116,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -110,7 +129,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.

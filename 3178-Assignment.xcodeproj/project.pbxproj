@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051EB94F2A0E213900A9195B /* UIViewController+displayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */; };
 		053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A0DB229C4478500DB79B4 /* AppDelegate.swift */; };
 		053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A0DB429C4478500DB79B4 /* SceneDelegate.swift */; };
 		053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A0DB629C4478500DB79B4 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayMessage.swift"; sourceTree = "<group>"; };
 		053A0DAF29C4478500DB79B4 /* 3178-Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3178-Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		053A0DB229C4478500DB79B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		053A0DB429C4478500DB79B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */,
 				054692202A09FC5700168C60 /* QuoteData.swift */,
 				0542308429F284D6004DC6EE /* ColourViewController.swift */,
+				051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */,
 				05D463C12A04EBC400197A84 /* Task Related */,
 				05D463C02A04EBA400197A84 /* Event Related */,
 				05D463BF2A04EB7000197A84 /* Subject Related */,
@@ -305,6 +308,7 @@
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
 				05D463B12A04D63A00197A84 /* Event+CoreDataClass.swift in Sources */,
+				051EB94F2A0E213900A9195B /* UIViewController+displayMessage.swift in Sources */,
 				059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */,
 				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
 				05D463BE2A04E9DB00197A84 /* User+CoreDataProperties.swift in Sources */,
