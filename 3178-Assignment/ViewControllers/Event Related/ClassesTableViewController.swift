@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EventKit
 
 class ClassesTableViewController: UITableViewController {
     
@@ -18,6 +19,8 @@ class ClassesTableViewController: UITableViewController {
     let SECTION_ITEM = 1
     
     var daysAhead = 3
+    weak var databaseController: DatabaseProtocol?
+    weak var eventStore: EKEventStore?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +30,48 @@ class ClassesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        eventStore = appDelegate?.store
     }
 
     @IBAction func newClass(_ sender: Any) {
         performSegue(withIdentifier: "newClass", sender: Any?.self)
     }
+    
+    @IBAction func authCalendar(_ sender: Any) {
+        Task{
+            _ = try await requestAccess(to: .event)
+        }
+    }
+    
+    func requestAccess(to entityType: EKEntityType) async throws -> Bool{
+//          TODO: SET UP ACCESS REQUEST ^-^
+//        let status = eventStore.authorizationStatus(for: .event)
+//
+//        switch (status) {
+//        case EKAuthorizationStatus.notDetermined:
+//                  // This happens on first-run
+//                //requestAccessToCalendar()
+//
+//        case EKAuthorizationStatus.authorized:
+//                   // Things are in line with being able to show the calendars in the table view
+//                //loadCalendars()
+//                //   refreshTableView()
+//            tableView.reloadData()
+//        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+//                   // We need to help them give us permission
+//               // needPermissionView.fadeIn()
+//            await eventStore?.requestAccess(to: .event)
+//        }
+//
+//        eventStore?.requestAccess(to: EKEntityType.event){
+//            granted, error in //?
+//        }
+        return false
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
