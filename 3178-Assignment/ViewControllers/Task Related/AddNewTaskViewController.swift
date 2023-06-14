@@ -40,9 +40,9 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
             displayMessage(title: "Eror", message: "Please Enter a Task Name")
             return
         }
-        let subject = (databaseController?.addSubject(name: "POOP", code: "FIT2002"))!
+       // let subject = (databaseController?.addSubject(name: "POOP", code: "FIT2002"))!
         
-        databaseController?.addTask(name: name, subject: subject)
+       // databaseController?.addTask(name: name, subject: subject)
         _ = navigationController?.popViewController(animated: true)
     }
     

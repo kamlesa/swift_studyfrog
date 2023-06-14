@@ -58,7 +58,7 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
             displayMessage(title: "Error", message: "Please Enter A Subject Name")
             return
         }
-        _ = databaseController?.addSubject(name: name!, code: code!)
+       // _ = databaseController?.addSubject(name: name!, code: code!)
         _ = navigationController?.popViewController(animated: true)
     }
     

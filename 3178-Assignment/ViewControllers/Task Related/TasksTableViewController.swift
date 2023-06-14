@@ -8,30 +8,18 @@
 import UIKit
 
 class TasksTableViewController: UITableViewController, DatabaseListener, TaskCellDelegate {
+
     
-    func taskComplete(_ placeholder: String) -> Bool {
-        var result = false
-        let alertController = UIAlertController(title: "Have you completed this Task?", message: "Task Info: --- ", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
-            result = true
-        }))
-        alertController.addAction(UIAlertAction(title: "No!", style: .default, handler: nil))
-        /*
-         
-         = UIAlertController(title: title, message: message, preferredStyle: .alert)
-         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-         self.present(alertController, animated: true, completion: nil)
-         */
-        return result
-    }
+    
+
     
     
     
     
     
     weak var databaseController: DatabaseProtocol?
-    var taskList:[ToDo] = []
-    var listenerType = ListenerType.task
+    var todoList:[ToDo] = []
+    var listenerType = ListenerType.todo
     var rowHeight = 100
 
     override func viewDidLoad() {
@@ -57,23 +45,41 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     }
     
     //MARK: - Database Listener
-    func onSubjectsChange(change: DatabaseChange, subjects: [Subject]) {
-        //do nothing
-    }
     
-    func onSubjectChange(change: DatabaseChange, assessments: [Assessment]) {
-        //do nothing
-
-    }
-    
-    func onTasksChange(change: DatabaseChange, tasks: [ToDo]) {
-        taskList = tasks
+    func onToDoChange(change: DatabaseChange, todos: [ToDo]) {
+        todoList = todos
         tableView.reloadData()
     }
     
-    func onEventsChange(change: DatabaseChange, events: [Event]) {
-        //do nothing
-
+    // MARK: - Task Cell Delegate Functions
+    
+    func todoComplete(_ placeholder: String) -> Bool {
+        var result = false
+        let alertController = UIAlertController(title: "Have you completed this Task?", message: "Task Info: --- ", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
+            result = true
+        }))
+        alertController.addAction(UIAlertAction(title: "No!", style: .default, handler: nil))
+        /*
+         
+         = UIAlertController(title: title, message: message, preferredStyle: .alert)
+         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+         self.present(alertController, animated: true, completion: nil)
+         */
+        return result
+    }
+    
+    func todoProgress(row: Int, progress: Float) {
+        var todo = todoList[row]
+        todo.progress = progress
+        //TODO: DOES THIS ACTUALLY UPDATE? IM NOT 100% SURE T-T
+    }
+    
+    func todoRemove(row: Int) {
+        //todo: implement
+        let todo = todoList[row]
+        todoList.remove(at: row)
+        databaseController?.deleteTodo(todo: todo)
     }
 
     // MARK: - Table view data source
@@ -85,19 +91,20 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return taskList.count
+        return todoList.count
     }
 
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
-        
+        let todo = todoList[indexPath.row]
         // Configure the cell...
         //var content = cell.defaultContentConfiguration()
-        cell.subjectLabel.text = "Test"//taskList[indexPath.row].subject?.name
-        cell.taskLabel.text = taskList[indexPath.row].name
-        cell.completionSlider.value = 0
+        cell.subjectLabel.text = "Subject -_-" //TODO: remove this part of cell.
+        cell.taskLabel.text = String(indexPath.row)
+        //cell.taskLabel.text = todo.name
+        cell.completionSlider.value = todo.progress
         cell.completionSlider.minimumValue = 0
         cell.completionSlider.maximumValue = 100
         
@@ -146,7 +153,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -154,6 +161,6 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

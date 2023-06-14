@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0514041E2A397CDD002C0166 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514041C2A397CDD002C0166 /* ToDo+CoreDataClass.swift */; };
+		0514041F2A397CDD002C0166 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514041D2A397CDD002C0166 /* ToDo+CoreDataProperties.swift */; };
 		051EB94F2A0E213900A9195B /* UIViewController+displayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */; };
 		053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A0DB229C4478500DB79B4 /* AppDelegate.swift */; };
 		053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A0DB429C4478500DB79B4 /* SceneDelegate.swift */; };
@@ -35,21 +37,13 @@
 		059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A782A04C5E1009940E4 /* CoreDataController.swift */; };
 		059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A7A2A04C9BD009940E4 /* ToDo.swift */; };
 		05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */; };
-		05D463AD2A04D63A00197A84 /* Assessment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */; };
-		05D463AE2A04D63A00197A84 /* Assessment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A42A04D63900197A84 /* Assessment+CoreDataProperties.swift */; };
-		05D463B12A04D63A00197A84 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A72A04D63900197A84 /* Event+CoreDataClass.swift */; };
-		05D463B22A04D63A00197A84 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */; };
-		05D463B32A04D63A00197A84 /* Subject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */; };
-		05D463B42A04D63A00197A84 /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */; };
-		05D463B52A04D63A00197A84 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AB2A04D63A00197A84 /* ToDo+CoreDataClass.swift */; };
-		05D463B62A04D63A00197A84 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463AC2A04D63A00197A84 /* ToDo+CoreDataProperties.swift */; };
-		05D463BD2A04E9DB00197A84 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */; };
-		05D463BE2A04E9DB00197A84 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */; };
 		05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D463C22A04ED3B00197A84 /* TaskCell.swift */; };
 		05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0514041C2A397CDD002C0166 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0514041D2A397CDD002C0166 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayMessage.swift"; sourceTree = "<group>"; };
 		053A0DAF29C4478500DB79B4 /* 3178-Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3178-Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		053A0DB229C4478500DB79B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,16 +74,6 @@
 		059E3A782A04C5E1009940E4 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		059E3A7A2A04C9BD009940E4 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		05D2EA0229C9327400385B9D /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
-		05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		05D463A42A04D63900197A84 /* Assessment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assessment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		05D463A72A04D63900197A84 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		05D463AB2A04D63A00197A84 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		05D463AC2A04D63A00197A84 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05D463C22A04ED3B00197A84 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		05E4D8E929C825EB00DC0F95 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,18 +140,10 @@
 		059E3A6F2A04C469009940E4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				0514041C2A397CDD002C0166 /* ToDo+CoreDataClass.swift */,
+				0514041D2A397CDD002C0166 /* ToDo+CoreDataProperties.swift */,
 				054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */,
 				054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */,
-				05D463BB2A04E9DB00197A84 /* User+CoreDataClass.swift */,
-				05D463BC2A04E9DB00197A84 /* User+CoreDataProperties.swift */,
-				05D463A32A04D63900197A84 /* Assessment+CoreDataClass.swift */,
-				05D463A42A04D63900197A84 /* Assessment+CoreDataProperties.swift */,
-				05D463A72A04D63900197A84 /* Event+CoreDataClass.swift */,
-				05D463A82A04D63900197A84 /* Event+CoreDataProperties.swift */,
-				05D463A92A04D63900197A84 /* Subject+CoreDataClass.swift */,
-				05D463AA2A04D63A00197A84 /* Subject+CoreDataProperties.swift */,
-				05D463AB2A04D63A00197A84 /* ToDo+CoreDataClass.swift */,
-				05D463AC2A04D63A00197A84 /* ToDo+CoreDataProperties.swift */,
 				059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */,
 			);
 			path = DataModel;
@@ -292,39 +268,31 @@
 				0542308329F284C3004DC6EE /* NewSubjectViewController.swift in Sources */,
 				0542308929F284FE004DC6EE /* NewAssessmentViewController.swift in Sources */,
 				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
-				05D463B32A04D63A00197A84 /* Subject+CoreDataClass.swift in Sources */,
 				059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */,
+				0514041E2A397CDD002C0166 /* ToDo+CoreDataClass.swift in Sources */,
 				054692252A09FCFA00168C60 /* Quote+CoreDataProperties.swift in Sources */,
-				05D463B62A04D63A00197A84 /* ToDo+CoreDataProperties.swift in Sources */,
-				05D463B42A04D63A00197A84 /* Subject+CoreDataProperties.swift in Sources */,
 				05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */,
 				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
 				054692242A09FCFA00168C60 /* Quote+CoreDataClass.swift in Sources */,
 				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
-				05D463B22A04D63A00197A84 /* Event+CoreDataProperties.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
-				05D463B12A04D63A00197A84 /* Event+CoreDataClass.swift in Sources */,
 				051EB94F2A0E213900A9195B /* UIViewController+displayMessage.swift in Sources */,
 				059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */,
 				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
-				05D463BE2A04E9DB00197A84 /* User+CoreDataProperties.swift in Sources */,
 				0542308729F284E2004DC6EE /* EditSubjectViewController.swift in Sources */,
-				05D463BD2A04E9DB00197A84 /* User+CoreDataClass.swift in Sources */,
 				0542308529F284D6004DC6EE /* ColourViewController.swift in Sources */,
-				05D463AE2A04D63A00197A84 /* Assessment+CoreDataProperties.swift in Sources */,
-				05D463B52A04D63A00197A84 /* ToDo+CoreDataClass.swift in Sources */,
 				0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */,
 				0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */,
-				05D463AD2A04D63A00197A84 /* Assessment+CoreDataClass.swift in Sources */,
 				0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */,
 				059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */,
 				0542307D29F2844B004DC6EE /* NewDeadlineViewController.swift in Sources */,
 				059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */,
 				059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */,
+				0514041F2A397CDD002C0166 /* ToDo+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

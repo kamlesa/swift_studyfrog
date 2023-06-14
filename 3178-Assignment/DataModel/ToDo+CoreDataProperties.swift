@@ -1,8 +1,8 @@
 //
-//  Task+CoreDataProperties.swift
+//  ToDo+CoreDataProperties.swift
 //  3178-Assignment
 //
-//  Created by Anika Kamleshwaran on 5/5/2023.
+//  Created by Anika Kamleshwaran on 14/6/2023.
 //
 //
 
@@ -18,8 +18,7 @@ extension ToDo {
 
     @NSManaged public var deadline: Date?
     @NSManaged public var name: String?
-    @NSManaged public var subject: Subject?
-    @NSManaged public var list: User?
+    @NSManaged public var progress: Float
 
 }
 

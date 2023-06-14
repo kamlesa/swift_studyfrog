@@ -8,10 +8,12 @@
 import UIKit
 
 class GradesTableViewController: UITableViewController, DatabaseListener {
+
+    
     
     weak var databaseController: DatabaseProtocol?
-    var listenerType = ListenerType.subject
-    var subjectList:[Subject] = []
+    var listenerType = ListenerType.all
+    //var subjectList:[Subject] = []
     var selectedSubject = "Mission Failed"
 
     override func viewDidLoad() {
@@ -36,22 +38,14 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     }
     
     //MARK: - Database Listener
+//
+//    func onSubjectsChange(change: DatabaseChange, subjects: [Subject]) {
+//        subjectList = subjects
+//        tableView.reloadData()
+//    }
     
-    func onSubjectsChange(change: DatabaseChange, subjects: [Subject]) {
-        subjectList = subjects
-        tableView.reloadData()
-    }
-    
-    func onSubjectChange(change: DatabaseChange, assessments: [Assessment]) {
-        // do nothing
-    }
-    
-    func onTasksChange(change: DatabaseChange, tasks: [ToDo]) {
-        // do nothing
-    }
-    
-    func onEventsChange(change: DatabaseChange, events: [Event]) {
-        // do nothing
+    func onToDoChange(change: DatabaseChange, todos: [ToDo]) {
+        //do nothing
     }
     
 
@@ -64,7 +58,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return subjectList.count
+        return 1//subjectList.count
     }
 
     
@@ -73,7 +67,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
 
         // Configure the cell...
         var content = cell.defaultContentConfiguration()
-        let subjectCode = subjectList[indexPath.row].code
+        let subjectCode = "Jokes"//subjectList[indexPath.row].code
         let grade = "80%"
         content.text = subjectCode
         content.secondaryText = grade
@@ -83,7 +77,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSubject = subjectList[indexPath.row].code ?? "FAIL"
+        selectedSubject = "fail" //subjectList[indexPath.row].code ?? "FAIL"
         performSegue(withIdentifier: "subjectDetails", sender: Any?.self)
     }
     
@@ -101,8 +95,8 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let subject = subjectList[indexPath.row]
-            databaseController?.deleteSubject(subject: subject)
+            //let subject = subjectList[indexPath.row]
+            //databaseController?.deleteSubject(subject: subject)
             //tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
