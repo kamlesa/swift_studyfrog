@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 private let reuseIdentifier = "Cell"
 
 class SubjectCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, DatabaseListener {
     
     var listenerType: ListenerType = .all
-    weak var databaseController: DatabaseProtocol?
+    weak var databaseController: FirebaseProtocol?
     
     let CELL_INFO = "infoCell"
     let CELL_ASSESSMENT = "assessmentCell"
@@ -35,20 +37,25 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         self.title = selectedSubject.code
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.firebaseController
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        Task{
-            do {
-                try assessments = await getAssessments(subject: selectedSubject)
-            } catch {
-                print("failure")
-            }
-        }
+        
+
+        setAssessments()
+        _ = updateCurrentGrade()
+        updateMaxGrade()
+        updateProgress()
+
 
         // Do any additional setup after loading the view.
     }
+    
+
+
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,82 +91,94 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     
     // MARK: - Grade Updates
     
-    func updateCurrentGrade()-> Float{
+    func updateCurrentGrade()-> Int{
         //update current grade!
+        var currentgrade = 0
+        var sum = 0
+        var weight = 0
+        for a in assessments{
+            sum += a.score ?? 0
+            weight += a.worth ?? 0
+        }
+        if weight > 0{
+            currentgrade = sum/weight*100
+        }else{
+            currentgrade = sum/100*100
+        }
+        selectedSubject.current_grade = currentgrade
+        databaseController?.updateSubject(subject: selectedSubject, fieldName: "current_grade", newValue: currentgrade)
         
         self.collectionView.reloadData()
-        return 0
+        return currentgrade
     }
     
     func updateMaxGrade(){
         //update current grade!
+        //var maxgrade = 100
+        var sum = 0
+        for a in assessments{
+            sum += a.score ?? 0
+        }
+        let x = 100 - ((selectedSubject.progress ?? 0) - sum)
         
+        selectedSubject.max_grade = x
+        databaseController?.updateSubject(subject: selectedSubject, fieldName: "max_grade", newValue: x)
+
         self.collectionView.reloadData()
     }
     
     func updateProgress(){
         //update current grade!
-        
+        var progress = 0
+        //var sum = 0
+        for a in assessments{
+            progress += a.worth ?? 0
+        }
+        selectedSubject.progress = progress
+        databaseController?.updateSubject(subject: selectedSubject, fieldName: "progress", newValue: progress)
         self.collectionView.reloadData()
     }
     
-    /*
-    func getAssessments(subject: Subject)-> [Assessment] {
-        var assessments:[Assessment] = []
-        if subject.assessments.count >= 1{
-            for i in 0..<subject.assessments.count{
-                let documentReference = selectedSubject.assessments[i]
-                documentReference.getDocument { (document, error) in
-                    if let error = error {
-                        print("Error: \(error)")
-                        return
-                    }
-                    guard let document = document, document.exists else {
-                        print("Document does not exist")
-                        return
-                    }
-                    
-                    do {
-                        let assessment = try document.data(as: Assessment.self)
-                        assessments.append(assessment)
-                        print("assessment appended.")
-                    } catch {
-                        print("error decoding")
-                    }
-                }
+    func fetchAssessment(i: Int) -> Assessment {
+        let documentReference: DocumentReference = selectedSubject.assessments[i]
+        var assessment:Assessment = Assessment()
+        documentReference.getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching document: \(error.localizedDescription)")
+                return
             }
-            return assessments
-        }
-        return assessments
-    }
-     */
-    
-    func getAssessments(subject: Subject) async throws -> [Assessment] {
-        var assessments: [Assessment] = []
-        
-        for documentReference in subject.assessments {
+            
+            guard let document = document, document.exists else {
+                print("Document does not exist")
+                return
+            }
+            
             do {
-                let document = try await documentReference.getDocument()
+                // Convert the document data to your custom object type
+                let object = try document.data(as: Assessment.self)
+                // You can now use the object
+                print("Fetched object: \(object)")
+                self.assessments.append(object)
                 
-                guard document.exists else {
-                    print("Document does not exist")
-                    continue
-                }
-                
-                if let assessment = try? document.data(as: Assessment.self) {
-                    assessments.append(assessment)
-                    print("Assessment appended.")
-                } else {
-                    print("Failed to decode Assessment")
-                }
             } catch {
-                print("Error: \(error)")
+                print("Error decoding document: \(error.localizedDescription)")
             }
+            
         }
-        
-        return assessments
+        return assessment
     }
-
+    
+    func setAssessments() {
+        //var a:[Assessment] = []
+        assessments = []
+        for i in 0..<selectedSubject.assessments.count{
+            //let x = await fetchAssessment(i: i)
+            //a.append(x)
+            _ = fetchAssessment(i: i)
+        }
+        //self.assessments = a
+    }
+    
 
 
     

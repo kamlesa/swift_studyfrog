@@ -11,6 +11,8 @@ import FirebaseAuth
 import Firebase
 
 class FirebaseController: NSObject, FirebaseProtocol {
+
+    
     
     // MARK: - Variables
     
@@ -271,4 +273,21 @@ class FirebaseController: NSObject, FirebaseProtocol {
         return true
     }
 
+    func updateSubject(subject: Subject, fieldName: String, newValue: Any) {
+        let docRef = Firestore.firestore().collection("subjects").document(subject.id!)
+
+        // Update a specific field in the document
+        docRef.updateData([fieldName: newValue]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("Document updated successfully!")
+            }
+        }
+    }
+    
+    func updateAssessment(subject: Assessment, fieldName: String, newValue: Any) {
+        //
+    }
+    
 }
