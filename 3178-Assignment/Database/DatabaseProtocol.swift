@@ -17,23 +17,21 @@ enum DatabaseChange {
 }
 
 enum ListenerType {
-    //case subject
+    case subject
     //case event
     case todo
-    //case assessment
+    case assessment
     case all
 }
 
 protocol DatabaseListener: AnyObject{
     var listenerType: ListenerType {get set}
     
-   //func onSubjectsChange(change: DatabaseChange, subjects: [Subject])
-    
-    //func onSubjectChange(change: DatabaseChange, assessments: [Assessment])
-
     func onToDoChange(change: DatabaseChange, todos: [ToDo])
+    
+    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject])
+    func onAllAssessmentsChange(change: DatabaseChange, assessments: [Assessment])
 
-    //func onEventsChange(change: DatabaseChange, events: [Event])
     
 }
 
@@ -42,15 +40,6 @@ protocol DatabaseProtocol: AnyObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
     
-//
-//    //subject:
-//    func addSubject(name: String, code: String) -> Subject
-//    func deleteSubject(subject: Subject)
-//
-//    //assessment:
-//    func addAssessment(name: String, worth: Double) -> Assessment
-//    func deleteAssessment(assessment: Assessment)
-//    //func addAssessmentToSubject(assessment: Assessment, subject: Subject)
 
     //todo:
     func addToDo(name: String, deadline: Date) -> ToDo
@@ -60,3 +49,22 @@ protocol DatabaseProtocol: AnyObject {
 //    func addEvent(name: String, date: Date) -> Event
 //    func deleteEvent(event: Event)
 }
+
+protocol FirebaseProtocol: AnyObject {
+    //this is seperated so I don't have to implement these methods into the core data controller
+    //however if you wanted all database stuff to be handled by firebase/core you just make either controller inherit both protocols
+    func cleanup()
+    func addListener(listener: DatabaseListener)
+    func removeListener(listener: DatabaseListener)
+    
+    var defaultSubject: Subject {get}
+    var currentSubject: Subject {get set}
+    //subject:
+    func addSubject(name: String, code: String, goal_grade: Int) -> Subject
+    func deleteSubject(subject: Subject)
+    
+    //assessment:
+    func addAssessment(name: String, worth: Int) -> Assessment
+    func deleteAssessment(assessment: Assessment)
+    func addAssessmentToSubject(assessment: Assessment, subject: Subject) -> Bool
+ }

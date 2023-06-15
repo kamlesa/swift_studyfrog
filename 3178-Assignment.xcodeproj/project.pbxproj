@@ -31,11 +31,16 @@
 		054692212A09FC5700168C60 /* QuoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054692202A09FC5700168C60 /* QuoteData.swift */; };
 		054692242A09FCFA00168C60 /* Quote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */; };
 		054692252A09FCFA00168C60 /* Quote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */; };
-		0567F9E12A3AA5AF00BED44D /* GradeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9E02A3AA5AF00BED44D /* GradeCalculator.swift */; };
 		0567F9E42A3AA85A00BED44D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0567F9E32A3AA85A00BED44D /* FirebaseAuth */; };
 		0567F9E62A3AA85A00BED44D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0567F9E52A3AA85A00BED44D /* FirebaseFirestore */; };
 		0567F9E82A3AA85A00BED44D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0567F9E72A3AA85A00BED44D /* FirebaseFirestoreSwift */; };
-		0567F9EA2A3AA91E00BED44D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0567F9E92A3AA91E00BED44D /* GoogleService-Info.plist */; };
+		0567F9EC2A3AA9BD00BED44D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0567F9EB2A3AA9BD00BED44D /* GoogleService-Info.plist */; };
+		0567F9EE2A3AAA0100BED44D /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9ED2A3AAA0100BED44D /* Subject.swift */; };
+		0567F9F02A3AAA9100BED44D /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9EF2A3AAA9100BED44D /* Assessment.swift */; };
+		0567F9F22A3AAAE200BED44D /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9F12A3AAAE200BED44D /* FirebaseController.swift */; };
+		0567F9FA2A3AD63600BED44D /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9F92A3AD63600BED44D /* InfoCollectionViewCell.swift */; };
+		0567F9FC2A3AD64600BED44D /* AssessmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9FB2A3AD64600BED44D /* AssessmentCollectionViewCell.swift */; };
+		0567F9FE2A3AD64F00BED44D /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567F9FD2A3AD64F00BED44D /* ProgressCollectionViewCell.swift */; };
 		059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A712A04C49B009940E4 /* MulticastDelegate.swift */; };
 		059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */; };
 		059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */; };
@@ -73,8 +78,13 @@
 		054692202A09FC5700168C60 /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
 		054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+CoreDataClass.swift"; sourceTree = "<group>"; };
 		054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0567F9E02A3AA5AF00BED44D /* GradeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCalculator.swift; sourceTree = "<group>"; };
-		0567F9E92A3AA91E00BED44D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Users/akam0020/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0567F9EB2A3AA9BD00BED44D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0567F9ED2A3AAA0100BED44D /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		0567F9EF2A3AAA9100BED44D /* Assessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assessment.swift; sourceTree = "<group>"; };
+		0567F9F12A3AAAE200BED44D /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		0567F9F92A3AD63600BED44D /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0567F9FB2A3AD64600BED44D /* AssessmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		0567F9FD2A3AD64F00BED44D /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		059E3A712A04C49B009940E4 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		059E3A762A04C599009940E4 /* StudyFrog-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StudyFrog-DataModel.xcdatamodel"; sourceTree = "<group>"; };
@@ -118,7 +128,7 @@
 		053A0DB129C4478500DB79B4 /* 3178-Assignment */ = {
 			isa = PBXGroup;
 			children = (
-				0567F9E92A3AA91E00BED44D /* GoogleService-Info.plist */,
+				0567F9EB2A3AA9BD00BED44D /* GoogleService-Info.plist */,
 				059E3A702A04C477009940E4 /* Database */,
 				059E3A6F2A04C469009940E4 /* DataModel */,
 				0542307B29F283DF004DC6EE /* ViewControllers */,
@@ -156,6 +166,8 @@
 				054692222A09FCFA00168C60 /* Quote+CoreDataClass.swift */,
 				054692232A09FCFA00168C60 /* Quote+CoreDataProperties.swift */,
 				059E3A752A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld */,
+				0567F9ED2A3AAA0100BED44D /* Subject.swift */,
+				0567F9EF2A3AAA9100BED44D /* Assessment.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -166,6 +178,7 @@
 				059E3A712A04C49B009940E4 /* MulticastDelegate.swift */,
 				059E3A732A04C4C5009940E4 /* DatabaseProtocol.swift */,
 				059E3A782A04C5E1009940E4 /* CoreDataController.swift */,
+				0567F9F12A3AAAE200BED44D /* FirebaseController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -174,12 +187,14 @@
 			isa = PBXGroup;
 			children = (
 				0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */,
-				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
+				0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */,
 				0542308229F284C3004DC6EE /* NewSubjectViewController.swift */,
 				0542308629F284E2004DC6EE /* EditSubjectViewController.swift */,
-				0567F9E02A3AA5AF00BED44D /* GradeCalculator.swift */,
-				0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */,
+				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
 				0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */,
+				0567F9F92A3AD63600BED44D /* InfoCollectionViewCell.swift */,
+				0567F9FB2A3AD64600BED44D /* AssessmentCollectionViewCell.swift */,
+				0567F9FD2A3AD64F00BED44D /* ProgressCollectionViewCell.swift */,
 			);
 			path = "Subject Related";
 			sourceTree = "<group>";
@@ -272,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				053A0DBF29C4478700DB79B4 /* LaunchScreen.storyboard in Resources */,
-				0567F9EA2A3AA91E00BED44D /* GoogleService-Info.plist in Resources */,
+				0567F9EC2A3AA9BD00BED44D /* GoogleService-Info.plist in Resources */,
 				053A0DBC29C4478700DB79B4 /* Assets.xcassets in Resources */,
 				053A0DBA29C4478500DB79B4 /* Main.storyboard in Resources */,
 			);
@@ -291,17 +306,20 @@
 				0542307F29F28460004DC6EE /* GoogleCalendarViewController.swift in Sources */,
 				059E3A7B2A04C9BD009940E4 /* ToDo.swift in Sources */,
 				0514041E2A397CDD002C0166 /* ToDo+CoreDataClass.swift in Sources */,
+				0567F9FC2A3AD64600BED44D /* AssessmentCollectionViewCell.swift in Sources */,
+				0567F9FA2A3AD63600BED44D /* InfoCollectionViewCell.swift in Sources */,
 				054692252A09FCFA00168C60 /* Quote+CoreDataProperties.swift in Sources */,
 				05D463C32A04ED3B00197A84 /* TaskCell.swift in Sources */,
 				0542307429F26C0C004DC6EE /* ClassesTableViewController.swift in Sources */,
+				0567F9F22A3AAAE200BED44D /* FirebaseController.swift in Sources */,
 				053A0DB729C4478500DB79B4 /* ViewController.swift in Sources */,
 				054692242A09FCFA00168C60 /* Quote+CoreDataClass.swift in Sources */,
 				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
-				0567F9E12A3AA5AF00BED44D /* GradeCalculator.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,
+				0567F9F02A3AAA9100BED44D /* Assessment.swift in Sources */,
 				051EB94F2A0E213900A9195B /* UIViewController+displayMessage.swift in Sources */,
 				059E3A772A04C599009940E4 /* StudyFrog-DataModel.xcdatamodeld in Sources */,
 				0542307229F26C01004DC6EE /* TasksTableViewController.swift in Sources */,
@@ -310,11 +328,13 @@
 				0542307029F26BCF004DC6EE /* GradesTableViewController.swift in Sources */,
 				0542308129F284A9004DC6EE /* NewClassViewController.swift in Sources */,
 				0542308B29F2855E004DC6EE /* ArchiveTableViewController.swift in Sources */,
+				0567F9FE2A3AD64F00BED44D /* ProgressCollectionViewCell.swift in Sources */,
 				059E3A792A04C5E1009940E4 /* CoreDataController.swift in Sources */,
 				0542307D29F2844B004DC6EE /* NewDeadlineViewController.swift in Sources */,
 				059E3A742A04C4C5009940E4 /* DatabaseProtocol.swift in Sources */,
 				059E3A722A04C49B009940E4 /* MulticastDelegate.swift in Sources */,
 				0514041F2A397CDD002C0166 /* ToDo+CoreDataProperties.swift in Sources */,
+				0567F9EE2A3AAA0100BED44D /* Subject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

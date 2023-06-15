@@ -9,12 +9,10 @@ import UIKit
 
 class GradesTableViewController: UITableViewController, DatabaseListener {
 
-    
-    
-    weak var databaseController: DatabaseProtocol?
-    var listenerType = ListenerType.all
-    //var subjectList:[Subject] = []
-    var selectedSubject = "Mission Failed"
+    weak var databaseController: FirebaseProtocol?
+    var listenerType = ListenerType.subject
+    var subjectList:[Subject] = []
+    var selectedSubject:Subject = Subject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +22,12 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        databaseController = appDelegate?.databaseController
+        databaseController = appDelegate?.firebaseController
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         databaseController?.addListener(listener: self)
     }
     
@@ -38,16 +37,19 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     }
     
     //MARK: - Database Listener
-//
-//    func onSubjectsChange(change: DatabaseChange, subjects: [Subject]) {
-//        subjectList = subjects
-//        tableView.reloadData()
-//    }
     
     func onToDoChange(change: DatabaseChange, todos: [ToDo]) {
         //do nothing
     }
     
+    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject]) {
+        //todo: implement
+        subjectList = subjAssessments
+    }
+    
+    func onAllAssessmentsChange(change: DatabaseChange, assessments: [Assessment]) {
+        //do nothing
+    }
 
     // MARK: - Table view data source
 
@@ -58,7 +60,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1//subjectList.count
+        return subjectList.count
     }
 
     
@@ -67,8 +69,9 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
 
         // Configure the cell...
         var content = cell.defaultContentConfiguration()
-        let subjectCode = "Jokes"//subjectList[indexPath.row].code
-        let grade = "80%"
+        var subject = subjectList[indexPath.row]
+        let subjectCode = subject.code//"still need to implement multiple subjects you goof" //subjectList[indexPath.row].code
+        let grade = "\(subject.current_grade ?? 0)%"
         content.text = subjectCode
         content.secondaryText = grade
         cell.contentConfiguration = content
@@ -77,7 +80,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSubject = "fail" //subjectList[indexPath.row].code ?? "FAIL"
+        selectedSubject = subjectList[indexPath.row] //subjectList[indexPath.row].code ?? "FAIL"
         performSegue(withIdentifier: "subjectDetails", sender: Any?.self)
     }
     
@@ -133,7 +136,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
             }
             //Do stuff to do with database!
             //TODO: convert this to a persistent data type!
-            destination.subject = selectedSubject
+            destination.selectedSubject = selectedSubject
         }
     }
     

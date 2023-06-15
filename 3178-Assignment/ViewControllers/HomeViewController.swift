@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         inspoQuoteTextView.text = "TESTING 123"
         inspoQuoteTextView.textAlignment = NSTextAlignment.center
         //indicator.startAnimating()
-        callAsync()
+        //callAsync()
     }
     
     // MARK: - Quotes API

@@ -12,11 +12,13 @@ import EventKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var databaseController: DatabaseProtocol?
+    var firebaseController: FirebaseProtocol?
     var store = EKEventStore()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         databaseController = CoreDataController()
+        firebaseController = FirebaseController()
         return true
     }
 

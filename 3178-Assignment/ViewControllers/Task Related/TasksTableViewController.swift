@@ -11,12 +11,6 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
 
     
     
-
-    
-    
-    
-    
-    
     weak var databaseController: DatabaseProtocol?
     var todoList:[ToDo] = []
     var listenerType = ListenerType.todo
@@ -49,6 +43,13 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     func onToDoChange(change: DatabaseChange, todos: [ToDo]) {
         todoList = todos
         tableView.reloadData()
+    }
+    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject]) {
+        //do nothing
+    }
+    
+    func onAllAssessmentsChange(change: DatabaseChange, assessments: [Assessment]) {
+        //do nothing
     }
     
     // MARK: - Task Cell Delegate Functions

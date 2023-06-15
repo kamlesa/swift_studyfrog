@@ -13,7 +13,7 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
     }
     
     
-    weak var databaseController: DatabaseProtocol?
+    weak var databaseController: FirebaseProtocol?
     @IBOutlet weak var subjectCodeField: UITextField!
     
     @IBOutlet weak var subjectColour: UISegmentedControl!
@@ -27,7 +27,7 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        databaseController = appDelegate?.databaseController
+        databaseController = appDelegate?.firebaseController
         // Do any additional setup after loading the view.
         
         
@@ -50,6 +50,7 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
     @IBAction func addClass(_ sender: Any) {
         let code = subjectCodeField.text
         let name = subjectNameField.text
+        let goalGrade = Int(goalGradeField.text ?? "0")
         if code == nil || code == "" {
             displayMessage(title: "Error", message: "Please Enter A Subject Code")
             return
@@ -58,6 +59,7 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
             displayMessage(title: "Error", message: "Please Enter A Subject Name")
             return
         }
+        _ = databaseController?.addSubject(name: name!, code: code!, goal_grade: goalGrade!)
        // _ = databaseController?.addSubject(name: name!, code: code!)
         _ = navigationController?.popViewController(animated: true)
     }
