@@ -60,6 +60,27 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         
     }
     
+    // MARK: - Grade Updates
+    
+    func updateCurrentGrade()-> Float{
+        //update current grade!
+        
+        self.collectionView.reloadData()
+        return 0
+    }
+    
+    func updateMaxGrade(){
+        //update current grade!
+        
+        self.collectionView.reloadData()
+    }
+    
+    func updateProgress(){
+        //update current grade!
+        
+        self.collectionView.reloadData()
+    }
+    
     
     
     // MARK: - Navigation
