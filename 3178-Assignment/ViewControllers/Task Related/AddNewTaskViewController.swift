@@ -7,14 +7,14 @@
 
 import UIKit
 
-class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddNewTaskViewController: UIViewController {
 
     
     
     @IBOutlet weak var taskDeadlinePicker: UIDatePicker!
     @IBOutlet weak var taskName: UITextField!
-    @IBOutlet weak var taskSubjectPicker: UIPickerView!
-    var pickerData: [String] = [String]()
+    //@IBOutlet weak var taskSubjectPicker: UIPickerView!
+    //var pickerData: [String] = [String]()
     weak var databaseController: DatabaseProtocol?
 
     
@@ -24,24 +24,26 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
         // Do any additional setup after loading the view.
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-        taskSubjectPicker.dataSource = self
-        taskSubjectPicker.delegate = self
+        //taskSubjectPicker.dataSource = self
+        //taskSubjectPicker.delegate = self
         
-        pickerData = ["3178", "3159", "2004", "General"]
+        //pickerData = ["3178", "3159", "2004", "General"]
         
     }
     
     @IBAction func addTask(_ sender: Any) {
         guard let name = taskName.text else{
-            displayMessage(title: "Eror", message: "Please Enter a Task Name")
+            displayMessage(title: "Error", message: "Please Enter a Task Name")
             return
         }
         if name == ""{
-            displayMessage(title: "Eror", message: "Please Enter a Task Name")
+            displayMessage(title: "Error", message: "Please Enter a Task Name")
             return
         }
+        let date = taskDeadlinePicker.date
        // let subject = (databaseController?.addSubject(name: "POOP", code: "FIT2002"))!
-        
+        _ = databaseController?.addToDo(name: name, deadline: date)
+        databaseController?.cleanup()
        // databaseController?.addTask(name: name, subject: subject)
         _ = navigationController?.popViewController(animated: true)
     }
@@ -56,7 +58,8 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     */
     
-    
+    /*
+     this is old code when i was implementing todos to relate to tasks!
     override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
@@ -75,7 +78,7 @@ class AddNewTaskViewController: UIViewController, UIPickerViewDataSource, UIPick
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
             return pickerData[row]
     }
-    
+    */
     
 
 }

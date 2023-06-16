@@ -10,6 +10,8 @@ import UIKit
 class TasksTableViewController: UITableViewController, DatabaseListener, TaskCellDelegate {
 
     
+
+    
     
     weak var databaseController: DatabaseProtocol?
     var todoList:[ToDo] = []
@@ -27,6 +29,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        tableView.allowsSelection = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,6 +38,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        databaseController?.cleanup()
         databaseController?.removeListener(listener: self)
     }
     
@@ -44,7 +48,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         todoList = todos
         tableView.reloadData()
     }
-    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject]) {
+    func onSubjectChange(change: DatabaseChange, subjects: [Subject]) {
         //do nothing
     }
     
@@ -54,9 +58,11 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     
     // MARK: - Task Cell Delegate Functions
     
-    func todoComplete(_ placeholder: String) -> Bool {
+    func todoComplete(row: Int) -> Bool {
         var result = false
-        let alertController = UIAlertController(title: "Have you completed this Task?", message: "Task Info: --- ", preferredStyle: .alert)
+        var todo = todoList[row]
+        let name = todo.name
+        let alertController = UIAlertController(title: "Have you completed this Task?", message: "Task Info: \(name ?? "")", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
             result = true
         }))
@@ -67,12 +73,13 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
          alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
          self.present(alertController, animated: true, completion: nil)
          */
+        self.present(alertController, animated: true, completion: nil)
         return result
     }
     
     func todoProgress(row: Int, progress: Float) {
         var todo = todoList[row]
-        todo.progress = progress
+        databaseController?.updateProgress(todo: todo, progress: progress)
         //TODO: DOES THIS ACTUALLY UPDATE? IM NOT 100% SURE T-T
     }
     
@@ -81,6 +88,10 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         let todo = todoList[row]
         todoList.remove(at: row)
         databaseController?.deleteTodo(todo: todo)
+    }
+    
+    func deadlineChange() {
+        performSegue(withIdentifier: "updateDeadline", sender: Any?.self)
     }
 
     // MARK: - Table view data source
@@ -103,8 +114,14 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         // Configure the cell...
         //var content = cell.defaultContentConfiguration()
         cell.subjectLabel.text = "Subject -_-" //TODO: remove this part of cell.
-        cell.taskLabel.text = String(indexPath.row)
-        //cell.taskLabel.text = todo.name
+        cell.taskLabel.text = (todo.name)
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone
+        
+        //button:
+        //cell.deadlineButton.setTitle("Test", for: .normal)
+        //cell.deadlineButton.backgroundColor = UIColor(named:"DefaultGreen")
+        
+        //progress slider:
         cell.completionSlider.value = todo.progress
         cell.completionSlider.minimumValue = 0
         cell.completionSlider.maximumValue = 100
@@ -116,28 +133,31 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         return 100
     }
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let task = taskList[indexPath.row]
-            databaseController?.deleteTask(task: task)
-            //tableView.reloadData()
-            //tableView.deleteRows(at: [indexPath], with: .fade)
+            let todo = todoList[indexPath.row]
+            databaseController?.deleteTodo(todo: todo)
+            tableView.reloadData()
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 
     /*
     // Override to support rearranging the table view.

@@ -28,8 +28,7 @@ protocol DatabaseListener: AnyObject{
     var listenerType: ListenerType {get set}
     
     func onToDoChange(change: DatabaseChange, todos: [ToDo])
-    
-    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject])
+    func onSubjectChange(change: DatabaseChange, subjects: [Subject])
     func onAllAssessmentsChange(change: DatabaseChange, assessments: [Assessment])
 
     
@@ -44,6 +43,8 @@ protocol DatabaseProtocol: AnyObject {
     //todo:
     func addToDo(name: String, deadline: Date) -> ToDo
     func deleteTodo(todo: ToDo)
+    func updateProgress(todo: ToDo, progress: Float)
+    func updateDeadline(todo: ToDo, deadline: Date)
 //
 //    //event:
 //    func addEvent(name: String, date: Date) -> Event
@@ -68,6 +69,6 @@ protocol FirebaseProtocol: AnyObject {
     func addAssessment(name: String, worth: Int) -> Assessment
     func deleteAssessment(assessment: Assessment)
     func addAssessmentToSubject(assessment: Assessment, subject: Subject) -> Bool
-    func updateAssessment(subject: Assessment, fieldName: String, newValue: Any)
+    func updateAssessment(assessment: Assessment, fieldName: String, newValue: Any)
 
  }

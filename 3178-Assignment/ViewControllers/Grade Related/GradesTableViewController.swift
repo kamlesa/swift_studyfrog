@@ -13,6 +13,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     var listenerType = ListenerType.subject
     var subjectList:[Subject] = []
     var selectedSubject:Subject = Subject()
+    var subjectIndex:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,10 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
         //do nothing
     }
     
-    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject]) {
+    func onSubjectChange(change: DatabaseChange, subjects: [Subject]) {
         //todo: implement
-        subjectList = subjAssessments
+        subjectList = subjects
+        tableView.reloadData()
     }
     
     func onAllAssessmentsChange(change: DatabaseChange, assessments: [Assessment]) {
@@ -81,6 +83,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSubject = subjectList[indexPath.row] //subjectList[indexPath.row].code ?? "FAIL"
+        subjectIndex = indexPath.row
         performSegue(withIdentifier: "subjectDetails", sender: Any?.self)
     }
     
@@ -137,7 +140,8 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
             //Do stuff to do with database!
             //TODO: convert this to a persistent data type!
             destination.selectedSubject = selectedSubject
-        }
+            destination.subjectIndex = subjectIndex
+        } 
     }
     
 

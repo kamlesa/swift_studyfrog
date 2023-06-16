@@ -3,35 +3,46 @@
 //  3178-Assignment
 //
 //  Created by Anika Kamleshwaran on 21/4/2023.
-//
+// https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
 
 import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import CoreMotion
 
 private let reuseIdentifier = "Cell"
 
-class SubjectCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, DatabaseListener {
+class SubjectCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, DatabaseListener, UITextFieldDelegate, ButtonDelegate {
+
     
+    //MARK: - Variables
     var listenerType: ListenerType = .all
     weak var databaseController: FirebaseProtocol?
     
     let CELL_INFO = "infoCell"
     let CELL_ASSESSMENT = "assessmentCell"
-    let CELL_MISSING = "missingWorthCell"
+    let CELL_BUTTON = "buttonCell"
     let CELL_PROGRESS = "progressCell"
     
     let SECTION_INFO = 0
     let SECTION_ASSESSMENT = 1
-    let SECTION_MISSING = 2
+    let SECTION_BUTTON = 2
     let SECTION_PROGRESS = 3
     
     let spacing: CGFloat = 10
     let borderWidth: CGFloat = 0.5
     
+    var subjectIndex:Int = 0
     var selectedSubject:Subject = Subject()
     var assessments: [Assessment] = []
+    
+    let motionManager: CMMotionManager = CMMotionManager()
+    
+    
+    
 
+    //MARK: - View Load Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = selectedSubject.code
@@ -53,9 +64,11 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         // Do any additional setup after loading the view.
     }
     
-
-
-
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,7 +79,13 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //if textField ==
+        textField.resignFirstResponder()
+        return true
+    }
+    
     //MARK: -  Button Functions
     @IBAction func addAssessment(_ sender: Any) {
         //TODO: ADD
@@ -90,6 +109,19 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     // MARK: - Grade Updates
+    func updateGrades() {
+        //this function is called when the button is clicked. the goal is to update all assessments and reload the data displayed
+        for i in 0 ..< (self.collectionView.numberOfItems(inSection: SECTION_ASSESSMENT)){
+            var cell = self.collectionView.cellForItem(at: IndexPath(row: i, section: SECTION_ASSESSMENT)) as! AssessmentCollectionViewCell
+            var value = cell.scoreTextField.text
+            var score = Int(value ?? "0")
+            self.databaseController?.updateAssessment(assessment: assessments[i], fieldName: "score", newValue: score)
+        }
+        databaseController?.cleanup()
+        _ = updateCurrentGrade()
+        updateProgress()
+        updateMaxGrade()
+    }
     
     func updateCurrentGrade()-> Int{
         //update current grade!
@@ -188,8 +220,8 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         //do nothing
     }
     
-    func onSubjectChange(change: DatabaseChange, subjAssessments: [Subject]) {
-        
+    func onSubjectChange(change: DatabaseChange, subjects: [Subject]) {
+        selectedSubject = subjects[subjectIndex]
         //assessments = subjAssessments
         self.collectionView.reloadData()
     }
@@ -207,9 +239,18 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         let identifier = segue.identifier
         
         if identifier == "addAssessment"{
-            //Do nothing
+            guard let destination = segue.destination as? NewAssessmentViewController else{
+                fatalError("Issue!")
+            }
+            destination.subject = selectedSubject
         }else if identifier == "editSubject"{
             //Do nothing
+            guard let destination = segue.destination as? EditSubjectViewController else{
+                fatalError("Wrong Destintion WHAT THE!")
+            }
+            destination.originalName = selectedSubject.name ?? ""
+            destination.originalCode = selectedSubject.code ?? ""
+            destination.originalGrade = selectedSubject.goal_grade ?? 0
         }
     }
     
@@ -233,8 +274,8 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
             return selectedSubject.assessments.count
         case SECTION_PROGRESS:
             return 1
-        case SECTION_MISSING:
-            return 0
+        case SECTION_BUTTON:
+            return 1
         default:
             return 0
         }
@@ -248,14 +289,14 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         switch section {
         case SECTION_INFO:
             //var infoCell = InfoCollectionViewCell()
-            var infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_INFO, for: indexPath) as! InfoCollectionViewCell
+            let infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_INFO, for: indexPath) as! InfoCollectionViewCell
 //            infoCell.leftAnchor.constraint(equalTo: leftAnchor)
 //            infoCell.maxWidth = collectionView.bounds.width - (2*spacing)
             infoCell.subject = selectedSubject
             infoCell.awakeFromNib()
             return infoCell
         case SECTION_ASSESSMENT:
-            var assessmentCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_ASSESSMENT, for: indexPath) as! AssessmentCollectionViewCell
+            let assessmentCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_ASSESSMENT, for: indexPath) as! AssessmentCollectionViewCell
             if assessments.count >= 1{
                 assessmentCell.assessment = assessments[indexPath.row]
             }
@@ -264,13 +305,13 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         case SECTION_PROGRESS:
             //let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
             //var progressCell = ProgressCollectionViewCell()
-            var progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_PROGRESS, for: indexPath) as! ProgressCollectionViewCell
+            let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_PROGRESS, for: indexPath) as! ProgressCollectionViewCell
             progressCell.subject = selectedSubject
             progressCell.awakeFromNib()
             return progressCell
         default:
-            let missingWorthCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_MISSING, for: indexPath)
-            return missingWorthCell
+            let buttonCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_BUTTON, for: indexPath)
+            return buttonCell
         }
     }
     
@@ -291,19 +332,41 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
 
     // MARK: UICollectionViewDelegate
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+        switch indexPath.section {
+        case SECTION_ASSESSMENT:
+            return true
+        default:
+            return false
+        }
     }
-    */
+    
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        switch indexPath.section {
+        case SECTION_ASSESSMENT:
+            return true
+        default:
+            return false
+        }
     }
-    */
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! AssessmentCollectionViewCell
+        cell.nameLabel.text = "Changed !"
+        let alertController = UIAlertController(title: "Delete Assessment", message: "Are you sure you want to delete \(cell.nameLabel.text ?? "this assessmnet")?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {_ in
+            let row = indexPath.row
+            self.databaseController?.deleteAssessment(assessment: self.assessments[row])
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -321,3 +384,5 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     */
 
 }
+
+

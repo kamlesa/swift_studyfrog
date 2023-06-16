@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewSubjectViewController: UIViewController, ColourChangeDelgate {
+class NewSubjectViewController: UIViewController, ColourChangeDelgate, UITextFieldDelegate {
     func changedToColour(_ colour: UIColor) {
         subjectColourView.backgroundColor = colour
     }
@@ -21,7 +21,9 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
     @IBOutlet weak var subjectNameField: UITextField!
     
     @IBOutlet weak var subjectColourView: UIView!
-    
+
+
+
     
     
     override func viewDidLoad() {
@@ -29,10 +31,26 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.firebaseController
         // Do any additional setup after loading the view.
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+        subjectCodeField.delegate = self
+        goalGradeField.delegate = self
+        subjectNameField.delegate = self
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //if textField ==
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     @IBAction func subjectColourChange(_ sender: Any) {
         //TODO: setup

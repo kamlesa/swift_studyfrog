@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050686E32A3BFECA000CA911 /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050686E22A3BFECA000CA911 /* ButtonCollectionViewCell.swift */; };
 		0514041E2A397CDD002C0166 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514041C2A397CDD002C0166 /* ToDo+CoreDataClass.swift */; };
 		0514041F2A397CDD002C0166 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514041D2A397CDD002C0166 /* ToDo+CoreDataProperties.swift */; };
 		051EB94F2A0E213900A9195B /* UIViewController+displayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		050686E22A3BFECA000CA911 /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		0514041C2A397CDD002C0166 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0514041D2A397CDD002C0166 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayMessage.swift"; sourceTree = "<group>"; };
@@ -109,6 +111,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050686E42A3C06D2000CA911 /* Grade Related */ = {
+			isa = PBXGroup;
+			children = (
+				0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */,
+				0542308229F284C3004DC6EE /* NewSubjectViewController.swift */,
+				0542308629F284E2004DC6EE /* EditSubjectViewController.swift */,
+				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
+			);
+			path = "Grade Related";
+			sourceTree = "<group>";
+		};
 		053A0DA629C4478500DB79B4 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +166,7 @@
 				051EB94E2A0E213900A9195B /* UIViewController+displayMessage.swift */,
 				05D463C12A04EBC400197A84 /* Task Related */,
 				05D463C02A04EBA400197A84 /* Event Related */,
+				050686E42A3C06D2000CA911 /* Grade Related */,
 				05D463BF2A04EB7000197A84 /* Subject Related */,
 			);
 			path = ViewControllers;
@@ -186,15 +200,12 @@
 		05D463BF2A04EB7000197A84 /* Subject Related */ = {
 			isa = PBXGroup;
 			children = (
-				0542306F29F26BCF004DC6EE /* GradesTableViewController.swift */,
 				0542307929F27287004DC6EE /* SubjectCollectionViewController.swift */,
-				0542308229F284C3004DC6EE /* NewSubjectViewController.swift */,
-				0542308629F284E2004DC6EE /* EditSubjectViewController.swift */,
-				0542308A29F2855E004DC6EE /* ArchiveTableViewController.swift */,
 				0542308829F284FE004DC6EE /* NewAssessmentViewController.swift */,
 				0567F9F92A3AD63600BED44D /* InfoCollectionViewCell.swift */,
 				0567F9FB2A3AD64600BED44D /* AssessmentCollectionViewCell.swift */,
 				0567F9FD2A3AD64F00BED44D /* ProgressCollectionViewCell.swift */,
+				050686E22A3BFECA000CA911 /* ButtonCollectionViewCell.swift */,
 			);
 			path = "Subject Related";
 			sourceTree = "<group>";
@@ -316,6 +327,7 @@
 				054692242A09FCFA00168C60 /* Quote+CoreDataClass.swift in Sources */,
 				0542307A29F27287004DC6EE /* SubjectCollectionViewController.swift in Sources */,
 				053A0DB329C4478500DB79B4 /* AppDelegate.swift in Sources */,
+				050686E32A3BFECA000CA911 /* ButtonCollectionViewCell.swift in Sources */,
 				053A0DB529C4478500DB79B4 /* SceneDelegate.swift in Sources */,
 				05D2EA0329C9327400385B9D /* AddNewTaskViewController.swift in Sources */,
 				05E4D8EA29C825EB00DC0F95 /* HomeViewController.swift in Sources */,

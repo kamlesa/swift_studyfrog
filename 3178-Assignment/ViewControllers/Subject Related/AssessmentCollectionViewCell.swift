@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreMotion
 
 class AssessmentCollectionViewCell: UICollectionViewCell {
     
    // var subject:Subject = Subject()
   //  var row = 0
+    
     var assessment = Assessment()
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var worthLabel: UILabel!
@@ -28,12 +30,12 @@ class AssessmentCollectionViewCell: UICollectionViewCell {
         self.nameLabel.text = assessment.name
         self.worthLabel.text = "Worth: \(assessment.worth)"
         self.scoreTextField.text = String(assessment.score ?? 0)
+                
     
     }
     
-    @IBAction func scoreEdit(_ sender: Any) {
-    }
-    
+
+
 }
 
 

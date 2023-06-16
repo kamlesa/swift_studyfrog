@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsControllerDelegate {
+
     //TODO: SET UP!
     
     //MARK: - Variables
@@ -35,8 +36,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         super.init()
         cleanup()
-        deleteTodos()
-        createDefaultTasks()
+        //deleteTodos()
+        //createDefaultTasks()
         //this if statement is for testing, if not todos in list, create some!
         if fetchTodos().count == 0{
             createDefaultTasks() //TODO: REMOVE WHEN WORKING!
@@ -44,6 +45,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func deleteTodos(){
+        //this function just deletes every to do - purpose is for testing only!
         let todoList = fetchTodos()
         for x in todoList{
             deleteTodo(todo: x)
@@ -95,6 +97,15 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         //deletes task from core data!
         persistentContainer.viewContext.delete(todo)
     }
+    
+    func updateProgress(todo: ToDo, progress: Float) {
+        todo.progress = progress
+    }
+    
+    func updateDeadline(todo: ToDo, deadline: Date) {
+        todo.deadline = deadline
+    }
+    
     
     //MARK: - Fetch Functions
     

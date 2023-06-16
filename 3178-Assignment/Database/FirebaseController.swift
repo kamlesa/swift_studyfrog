@@ -171,43 +171,26 @@ class FirebaseController: NSObject, FirebaseProtocol {
             
             listeners.invoke { (listener) in
                 if listener.listenerType == ListenerType.subject || listener.listenerType == ListenerType.all {
-                    listener.onSubjectChange(change: .update, subjAssessments: subjectList)
+                    listener.onSubjectChange(change: .update, subjects: subjectList)
                 }
             }
             
         }
     }
     
-    /* this version is for one subject only existing ....
-     func parseSubjectSnapshot(snapshot: QueryDocumentSnapshot){
-         defaultSubject = Subject()
-         defaultSubject.name = snapshot.data()["name"] as? String
-         defaultSubject.id = snapshot.documentID
-         if let assessmentReferences = snapshot.data()["assessments"] as? [DocumentReference] {
-             for reference in assessmentReferences {
-                 if let assessment = getAssessmentByID(reference.documentID) {
-                     defaultSubject.assessments.append(assessment)
-                 }
-             }
-         }
-         listeners.invoke { (listener) in
-             if listener.listenerType == ListenerType.subject || listener.listenerType == ListenerType.all {
-                 listener.onSubjectChange(change: .update, subjAssessments: defaultSubject.assessments)
-             }
-         }
-     }
-     */
     
     //MARK: - Database Protocol Basic Functions
 
     func cleanup() {
+        //setupSubjectListener()
+        
         //Does nothing
     }
     
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         if listener.listenerType == .subject || listener.listenerType == .all {
-            listener.onSubjectChange(change: .update, subjAssessments: subjectList)
+            listener.onSubjectChange(change: .update, subjects: subjectList)
         }
         if listener.listenerType == .assessment || listener.listenerType == .all {
             listener.onAllAssessmentsChange(change: .update, assessments: assessmentList)
@@ -286,8 +269,17 @@ class FirebaseController: NSObject, FirebaseProtocol {
         }
     }
     
-    func updateAssessment(subject: Assessment, fieldName: String, newValue: Any) {
-        //
+    func updateAssessment(assessment: Assessment, fieldName: String, newValue: Any) {
+        let docRef = Firestore.firestore().collection("assessments").document(assessment.id!)
+
+        // Update a specific field in the document
+        docRef.updateData([fieldName: newValue]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("Document updated successfully!")
+            }
+        }
     }
     
 }

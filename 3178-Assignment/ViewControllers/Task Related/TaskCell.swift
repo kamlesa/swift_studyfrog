@@ -9,13 +9,15 @@
 import UIKit
 
 protocol TaskCellDelegate: AnyObject {
-    func todoComplete(_ placeholder: String) -> Bool //TODO: potentially update the parameters.
+    func todoComplete(row: Int) -> Bool //TODO: potentially update the parameters.
     func todoProgress(row: Int, progress: Float)
     func todoRemove(row: Int)
+    func deadlineChange()
 }
 
 class TaskCell: UITableViewCell {
     
+    @IBOutlet weak var deadlineButton: UIButton!
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var completionSlider: UISlider!
@@ -26,6 +28,7 @@ class TaskCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         row = indexPath?.row ?? 0
+        deadlineButton.isOpaque = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -54,7 +57,7 @@ class TaskCell: UITableViewCell {
             completionSlider.tintColor = UIColor(named:"DefaultGreen")
             
             //if the progress is 95+ we see if they want to mark the test as completed!
-            var value = delegate?.todoComplete("Test")
+            var value = delegate?.todoComplete(row: row)
             print(value)
             if (value ?? false){
                 //delete the todo.
@@ -65,8 +68,13 @@ class TaskCell: UITableViewCell {
         }
     }
     
-    
-
+//    
+//    @IBAction func updateDeadline(_ sender: Any) {
+//        //TODO: IMPLEMENT
+//        delegate?.deadlineChange()
+//        //delegate.performSegue(withIdentifier: "updateDeadline", sender: Any?.self)
+//    }
+//    
     
 }
 
