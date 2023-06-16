@@ -26,7 +26,7 @@ class AddNewTaskViewController: UIViewController {
         databaseController = appDelegate?.databaseController
         //taskSubjectPicker.dataSource = self
         //taskSubjectPicker.delegate = self
-        
+
         //pickerData = ["3178", "3159", "2004", "General"]
         
     }

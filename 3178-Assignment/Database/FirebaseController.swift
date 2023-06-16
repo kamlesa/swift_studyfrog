@@ -120,7 +120,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
             do {
                 
                 let documentData = change.document.data()
-                print("Documentdata:", documentData)
+                //print("Documentdata:", documentData)
                 assessment = try change.document.data(as: Assessment.self)
                 
             } catch {
@@ -128,7 +128,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
             }
             //let ass = assessmentList
             if change.type == .added {
-                print("index for ass = \(Int(change.newIndex))")
+                //print("index for ass = \(Int(change.newIndex))")
                 assessmentList.insert(assessment, at: Int(change.newIndex))
             } else if change.type == .modified {
                 assessmentList.remove(at: Int(change.oldIndex))
@@ -151,7 +151,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
             var subject: Subject
             do {
                 let documentData = change.document.data()
-                print("Documentdata:", documentData)
+                //print("Documentdata:", documentData)
 
                 subject = try change.document.data(as: Subject.self)
             } catch {
@@ -159,7 +159,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
             }
             //let sub = subjectList
             if change.type == .added {
-                print("index for subject = \(Int(change.newIndex))")
+                //print("index for subject = \(Int(change.newIndex))")
                 //subjectList.insert(subject, at: 0)
                 subjectList.insert(subject, at: Int(change.newIndex))
             } else if change.type == .modified {
@@ -234,8 +234,10 @@ class FirebaseController: NSObject, FirebaseProtocol {
                 a.id = aRef.documentID
             }
         } catch {
-            print("Failed to serialize hero")
+            print("Failed to serialize assessment")
         }
+        
+        
         return a
         //TODO: handle this error e.g. like with the user.
     }
@@ -252,6 +254,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
         }
         if let newARef = assessmentsRef?.document(aID) {
             subjectsRef?.document(sID).updateData(["assessments": FieldValue.arrayUnion([newARef])])
+            //assessment.subject = (subjectsRef?.document(sID))!
         }
         return true
     }

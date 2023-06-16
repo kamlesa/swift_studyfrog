@@ -94,8 +94,8 @@ class NewSubjectViewController: UIViewController, ColourChangeDelgate, UITextFie
             let destination = segue.destination as! ColourViewController
             destination.delegate = self
             
-            guard case let colour = subjectColourView.backgroundColor?.cgColor else {
-                print("NOTHING!")
+            guard let colour = subjectColourView.backgroundColor?.cgColor else {
+                //print("NOTHING!")
                 return
             }
             //print(colour)

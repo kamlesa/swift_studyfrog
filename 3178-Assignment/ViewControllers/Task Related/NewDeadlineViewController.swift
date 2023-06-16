@@ -7,15 +7,29 @@
 
 import UIKit
 
-class NewDeadlineViewController: UIViewController {
+protocol NewDeadlineDelegate {
+    func newDeadline(deadline: Date, row: Int)
+}
 
+class NewDeadlineViewController: UIViewController {
+    
+    var originalDate: Date = Date()
+    var row: Int = 0
+    @IBOutlet weak var datePicker: UIDatePicker!
+    var delegate: NewDeadlineDelegate?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //datePicker.date = Date()
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func updateDeadline(_ sender: Any) {
+        let d = datePicker.date
+        delegate?.newDeadline(deadline: d, row: row)
+    }
+    
     /*
     // MARK: - Navigation
 

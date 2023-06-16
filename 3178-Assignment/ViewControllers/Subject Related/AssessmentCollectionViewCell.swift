@@ -13,7 +13,7 @@ class AssessmentCollectionViewCell: UICollectionViewCell {
    // var subject:Subject = Subject()
   //  var row = 0
     
-    var assessment = Assessment()
+    //var assessment:Assessment //= Assessment()
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var worthLabel: UILabel!
     @IBOutlet weak var scoreTextField: UITextField!
@@ -26,12 +26,12 @@ class AssessmentCollectionViewCell: UICollectionViewCell {
 //        worthLabel.text = "Worth: 100%"
 //        scoreTextField.text = "9"
         
-        
+        /*
         self.nameLabel.text = assessment.name
         self.worthLabel.text = "Worth: \(assessment.worth)"
         self.scoreTextField.text = String(assessment.score ?? 0)
-                
-    
+        */
+        
     }
     
 

@@ -12,8 +12,14 @@ class ButtonCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var updateButton: UIButton!
     var delegate:ButtonDelegate?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //updateButton.
+    }
+    
     @IBAction func updateGrades(_ sender: Any) {
         delegate?.updateGrades()
+        //updateButton.
     }
 }
 

@@ -7,16 +7,13 @@
 
 import UIKit
 
-class TasksTableViewController: UITableViewController, DatabaseListener, TaskCellDelegate {
-
-    
-
-    
-    
+class TasksTableViewController: UITableViewController, DatabaseListener, TaskCellDelegate, NewDeadlineDelegate {
+   
     weak var databaseController: DatabaseProtocol?
     var todoList:[ToDo] = []
     var listenerType = ListenerType.todo
     var rowHeight = 100
+    var cellRow: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,25 +57,20 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     
     func todoComplete(row: Int) -> Bool {
         var result = false
-        var todo = todoList[row]
+        let todo = todoList[row]
         let name = todo.name
-        let alertController = UIAlertController(title: "Have you completed this Task?", message: "Task Info: \(name ?? "")", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Have you completed this Task?", message: "\(name ?? "")", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
+            self.todoRemove(row: row)
             result = true
         }))
         alertController.addAction(UIAlertAction(title: "No!", style: .default, handler: nil))
-        /*
-         
-         = UIAlertController(title: title, message: message, preferredStyle: .alert)
-         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-         self.present(alertController, animated: true, completion: nil)
-         */
         self.present(alertController, animated: true, completion: nil)
         return result
     }
     
     func todoProgress(row: Int, progress: Float) {
-        var todo = todoList[row]
+        let todo = todoList[row]
         databaseController?.updateProgress(todo: todo, progress: progress)
         //TODO: DOES THIS ACTUALLY UPDATE? IM NOT 100% SURE T-T
     }
@@ -88,11 +80,20 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         let todo = todoList[row]
         todoList.remove(at: row)
         databaseController?.deleteTodo(todo: todo)
+        databaseController?.removeListener(listener: self)
+        databaseController?.addListener(listener: self)
     }
     
     func deadlineChange() {
         performSegue(withIdentifier: "updateDeadline", sender: Any?.self)
     }
+    
+    
+    func newDeadline(deadline: Date, row: Int) {
+        let todo = todoList[row]
+        databaseController?.updateDeadline(todo: todo, deadline: deadline)
+    }
+    
 
     // MARK: - Table view data source
 
@@ -113,14 +114,39 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         let todo = todoList[indexPath.row]
         // Configure the cell...
         //var content = cell.defaultContentConfiguration()
-        cell.subjectLabel.text = "Subject -_-" //TODO: remove this part of cell.
+        cell.subjectLabel.text = "^-^" //TODO: remove this part of cell.
         cell.taskLabel.text = (todo.name)
+        cell.delegate = self
         //cell.selectionStyle = UITableViewCellSelectionStyleNone
         
         //button:
-        //cell.deadlineButton.setTitle("Test", for: .normal)
-        //cell.deadlineButton.backgroundColor = UIColor(named:"DefaultGreen")
+        let calendar = Calendar.current
+        var deadline: String = ""
+        let date = todo.deadline
+        let myDate = calendar.startOfDay(for: date ?? Date())
         
+        //this gets a string format of the date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        let dateString = dateFormatter.string(from: date ?? Date())
+        
+        
+        if calendar.isDateInToday(myDate){
+            deadline = "Today"
+            cell.deadlineButton.tintColor = UIColor(named: "DefaultOrange")
+        }else if calendar.isDateInTomorrow(myDate){
+            deadline = "Tomorrow"
+            cell.deadlineButton.tintColor = UIColor(named: "DefaultYellow")
+        }else if date?.compare(Date()) == .orderedAscending{
+            deadline = dateString
+            cell.deadlineButton.tintColor = UIColor(named: "DefaultRed")
+        }else{
+            deadline = dateString
+            cell.deadlineButton.tintColor = UIColor(named: "DefaultGreen")
+        }
+
+        cell.deadlineButton.setTitle(deadline, for: .normal)
+        cell.deadlineButton.addTarget(cell, action: #selector(cell.buttonClicked(_:)), for: .touchUpInside)
         //progress slider:
         cell.completionSlider.value = todo.progress
         cell.completionSlider.minimumValue = 0
@@ -148,6 +174,8 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
             // Delete the row from the data source
             let todo = todoList[indexPath.row]
             databaseController?.deleteTodo(todo: todo)
+            databaseController?.removeListener(listener: self)
+            databaseController?.addListener(listener: self)
             tableView.reloadData()
             
         } else if editingStyle == .insert {
@@ -181,6 +209,16 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "updateDeadline"{
+            guard let destination = segue.destination as? NewDeadlineViewController else {
+                //cry T-T
+                fatalError("Segue Issue!")
+            }
+            let todo = todoList[cellRow]
+            destination.row = cellRow
+            destination.originalDate = todo.deadline ?? Date()
+            
+        }
     }
     
 

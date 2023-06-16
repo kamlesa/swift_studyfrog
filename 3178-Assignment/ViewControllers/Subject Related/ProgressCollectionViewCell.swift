@@ -20,7 +20,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         // Initialization code
         //todo: figure out progress
         //let subject = delegate?.selectedSubject
-        print(subject.progress)
+        //print(subject.progress)
         progressView.setProgress(1.0, animated: false)
         progressView.progress = Float(subject.progress ?? 0)/100
         textView.text = "You have current progressed \(subject.progress ?? 0)% through the semester. Keep up the hard work!"

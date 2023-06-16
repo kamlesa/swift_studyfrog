@@ -241,6 +241,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Deadline"/>
+                                <connections>
+                                    <action selector="updateDeadline:" destination="W7K-5Z-RsA" eventType="touchUpInside" id="Lah-pV-1m2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ysz-6B-TsW"/>
@@ -261,6 +264,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Deadline" id="Gqj-VA-mj3"/>
+                    <connections>
+                        <outlet property="datePicker" destination="36j-Do-raT" id="IvC-eT-aTp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LxN-hr-l8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -671,7 +677,7 @@
                                                 <color key="baseForegroundColor" systemColor="labelColor"/>
                                             </buttonConfiguration>
                                             <connections>
-                                                <segue destination="W7K-5Z-RsA" kind="show" identifier="updateDeadline" id="Hht-VK-JBc"/>
+                                                <action selector="buttonClicked:" destination="unH-P1-o8e" eventType="touchUpInside" id="A4N-P2-Gh3"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -800,6 +806,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="W7K-5Z-RsA" kind="show" identifier="updateDeadline" id="bDj-ww-6Hf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayW-Gj-CAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

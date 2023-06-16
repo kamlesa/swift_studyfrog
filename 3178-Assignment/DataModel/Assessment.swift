@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseFirestoreSwift
-
+import FirebaseFirestore
 
 class Assessment: NSObject, Codable {
     
@@ -15,6 +15,8 @@ class Assessment: NSObject, Codable {
     var name: String?
     var worth: Int?
     var score: Int?
+    //var subject: DocumentReference
+    
     
     /*
      

@@ -112,9 +112,9 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     func updateGrades() {
         //this function is called when the button is clicked. the goal is to update all assessments and reload the data displayed
         for i in 0 ..< (self.collectionView.numberOfItems(inSection: SECTION_ASSESSMENT)){
-            var cell = self.collectionView.cellForItem(at: IndexPath(row: i, section: SECTION_ASSESSMENT)) as! AssessmentCollectionViewCell
-            var value = cell.scoreTextField.text
-            var score = Int(value ?? "0")
+            let cell = self.collectionView.cellForItem(at: IndexPath(row: i, section: SECTION_ASSESSMENT)) as! AssessmentCollectionViewCell
+            let value = cell.scoreTextField.text
+            let score = Int(value ?? "0")
             self.databaseController?.updateAssessment(assessment: assessments[i], fieldName: "score", newValue: score)
         }
         databaseController?.cleanup()
@@ -251,6 +251,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
             destination.originalName = selectedSubject.name ?? ""
             destination.originalCode = selectedSubject.code ?? ""
             destination.originalGrade = selectedSubject.goal_grade ?? 0
+            destination.subject = selectedSubject
         }
     }
     
@@ -298,7 +299,10 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         case SECTION_ASSESSMENT:
             let assessmentCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_ASSESSMENT, for: indexPath) as! AssessmentCollectionViewCell
             if assessments.count >= 1{
-                assessmentCell.assessment = assessments[indexPath.row]
+                let assessment = assessments[indexPath.row]
+                assessmentCell.scoreTextField.text = String(assessment.score ?? 0 )
+                assessmentCell.nameLabel.text = assessment.name
+                assessmentCell.worthLabel.text = String(assessment.worth ?? 0 )
             }
             assessmentCell.awakeFromNib()
             return assessmentCell

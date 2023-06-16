@@ -66,7 +66,7 @@ protocol FirebaseProtocol: AnyObject {
     func updateSubject(subject: Subject, fieldName: String, newValue: Any)
     
     //assessment:
-    func addAssessment(name: String, worth: Int) -> Assessment
+    func addAssessment(name: String, worth: Int) -> Assessment //, subject:Subject
     func deleteAssessment(assessment: Assessment)
     func addAssessmentToSubject(assessment: Assessment, subject: Subject) -> Bool
     func updateAssessment(assessment: Assessment, fieldName: String, newValue: Any)

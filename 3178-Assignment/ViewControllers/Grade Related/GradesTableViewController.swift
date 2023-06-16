@@ -28,7 +28,6 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         databaseController?.addListener(listener: self)
     }
     

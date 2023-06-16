@@ -13,6 +13,7 @@ protocol TaskCellDelegate: AnyObject {
     func todoProgress(row: Int, progress: Float)
     func todoRemove(row: Int)
     func deadlineChange()
+    var cellRow:Int {get set}
 }
 
 class TaskCell: UITableViewCell {
@@ -23,12 +24,15 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var completionSlider: UISlider!
     weak var delegate: TaskCellDelegate?
     var row: Int = 0
+    //var originalDate: Date = Date()
+    
+    var buttonActionTarget: AnyObject?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         row = indexPath?.row ?? 0
-        deadlineButton.isOpaque = true
+        //delegate?.cellRow
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,6 +42,7 @@ class TaskCell: UITableViewCell {
     }
 
     @IBAction func sliderChange(_ sender: Any) {
+        row = indexPath?.row ?? 0
         //update the todo with the progress assigned by user =)
         let sliderValue = completionSlider.value
         delegate?.todoProgress(row: row, progress: sliderValue)
@@ -57,15 +62,17 @@ class TaskCell: UITableViewCell {
             completionSlider.tintColor = UIColor(named:"DefaultGreen")
             
             //if the progress is 95+ we see if they want to mark the test as completed!
-            var value = delegate?.todoComplete(row: row)
-            print(value)
-            if (value ?? false){
-                //delete the todo.
-                delegate?.todoRemove(row: row)
-                return
-            }
+            _ = delegate?.todoComplete(row: indexPath?.row ?? 0)
+           
             //else do nothing!?
         }
+    }
+    
+    @IBAction func buttonClicked(_ sender: UIButton) {
+        delegate?.cellRow = row
+        delegate?.deadlineChange()
+        //guard let viewController = viewController
+        //TasksTableViewController.performSegue(withIdentifier: "updateDeadline", sender: Any?.self)
     }
     
 //    

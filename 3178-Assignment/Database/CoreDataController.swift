@@ -95,11 +95,49 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func deleteTodo(todo: ToDo) {
         //deletes task from core data!
-        persistentContainer.viewContext.delete(todo)
+        let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
+        let context = persistentContainer.viewContext
+        if let todoName = todo.name {
+            print(todoName)
+            fetchRequest.predicate = NSPredicate(format: "name == %@", todoName) // Set a predicate to identify the specific object to update
+        }
+        do {
+            let results = try context.fetch(fetchRequest)
+            if let new_todo = results.first {
+                // Modify the properties of the fetched object
+                persistentContainer.viewContext.delete(new_todo)
+                
+                // Save the changes
+                try context.save()
+            }
+        } catch {
+            print("Error updating object: \(error)")
+        }
+        //persistentContainer.viewContext.delete(todo)
     }
     
     func updateProgress(todo: ToDo, progress: Float) {
-        todo.progress = progress
+        print(todo.progress)
+        let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
+        let context = persistentContainer.viewContext
+        if let todoName = todo.name {
+            print(todoName)
+            fetchRequest.predicate = NSPredicate(format: "name == %@", todoName) // Set a predicate to identify the specific object to update
+        }
+        do {
+            let results = try context.fetch(fetchRequest)
+            if let todo = results.first {
+                // Modify the properties of the fetched object
+                todo.progress = progress
+                
+                // Save the changes
+                try context.save()
+            }
+        } catch {
+            print("Error updating object: \(error)")
+        }
+        print(todo.progress)
+        //todo.progress = progress
     }
     
     func updateDeadline(todo: ToDo, deadline: Date) {
@@ -110,6 +148,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     //MARK: - Fetch Functions
     
     func fetchTodos() -> [ToDo] {
+        todoFetchedResultsController = nil
         if todoFetchedResultsController == nil {
             let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
             //TODO: IF YOU GET TIME - UPDATE THIS TO DISPLAY IN DATE ORDER INSTEAD.
@@ -138,8 +177,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         //function to add some default tasks
         let _ = addToDo(name: "research 1", deadline: Date())
         let _ = addToDo(name: "research 2", deadline: Date())
-        let _ = addToDo(name: "study", deadline: Date())
-        let _ = addToDo(name: "piss my pants!", deadline: Date())
+        //let _ = addToDo(name: "study", deadline: Date())
+        //let _ = addToDo(name: "piss my pants!", deadline: Date())
         cleanup()
     }
     
