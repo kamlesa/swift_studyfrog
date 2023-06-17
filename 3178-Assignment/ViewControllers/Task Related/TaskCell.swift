@@ -83,14 +83,6 @@ class TaskCell: UITableViewCell {
         //TasksTableViewController.performSegue(withIdentifier: "updateDeadline", sender: Any?.self)
     }
     
-//    
-//    @IBAction func updateDeadline(_ sender: Any) {
-//        //TODO: IMPLEMENT
-//        delegate?.deadlineChange()
-//        //delegate.performSegue(withIdentifier: "updateDeadline", sender: Any?.self)
-//    }
-//    
-    
 }
 
 

@@ -22,9 +22,9 @@ class AssessmentCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         // Add outline/border to the cell
-            self.layer.borderWidth = 2.0
-            self.layer.borderColor = UIColor.black.cgColor
-            self.layer.cornerRadius = 8.0
+        self.layer.borderWidth = 2.0
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.cornerRadius = 8.0
         
     }
     

@@ -38,7 +38,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     
     let motionManager: CMMotionManager = CMMotionManager()
     
-    
+    var weights: [Int] = []
     
 
     //MARK: - View Load Functions
@@ -46,19 +46,16 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = selectedSubject.code
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //assessments = []
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.firebaseController
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        _ = updateCurrentGrade()
-        updateMaxGrade()
-        updateProgress()
+        //updateGrades()
         
-        //let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-        //collectionView.addGestureRecognizer(longPressGesture)
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
         // Do any additional setup after loading the view.
     }
@@ -73,6 +70,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         databaseController?.getAssessments(subjectName: selectedSubject.name ?? "")
+        viewDidLoad()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,55 +86,73 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     
     //MARK: -  Button Functions
     @IBAction func addAssessment(_ sender: Any) {
-        //TODO: ADD
         performSegue(withIdentifier: "addAssessment", sender: Any?.self)
     }
     
     
     @IBAction func editSubject(_ sender: Any) {
-        //TODO: EDIT
         performSegue(withIdentifier: "editSubject", sender: Any?.self)
     }
     
     @IBAction func archiveSubject(_ sender: Any) {
-        //TODO: ARCHIVE
-        
+        displayMessage(title: "Archive Unavailable", message: "Sorry this feature is not implemented yet!")
     }
     
     @IBAction func deleteSubject(_ sender: Any) {
-        //TODO: IMPLEMENT
+        let alertController = UIAlertController(title: "Delete: \(selectedSubject.code ?? "")", message: "Are you sure you want to delete this subject?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
+            
+            self.databaseController?.deleteSubject(subject: self.selectedSubject)
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        alertController.addAction(UIAlertAction(title: "No!", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
         
     }
     
     // MARK: - Grade Updates
     func updateGrades() {
         //this function is called when the button is clicked. the goal is to update all assessments and reload the data displayed
-        for i in 0 ..< (self.collectionView.numberOfItems(inSection: SECTION_ASSESSMENT)){
+        var scores: [Int] = []
+        
+        for i in 0 ..< (assessments.count){
             let cell = self.collectionView.cellForItem(at: IndexPath(row: i, section: SECTION_ASSESSMENT)) as! AssessmentCollectionViewCell
             let value = cell.scoreTextField.text
             let score = Int(value ?? "0")
+            //let value_2 = cell
+            //let weight =
+            //weights.append(weight ?? 0)
+            scores.append(score ?? 0)
             self.databaseController?.updateAssessment(assessment: assessments[i], fieldName: "score", newValue: score)
         }
+        //databaseController?.getAssessments(subjectName: selectedSubject.name)
         databaseController?.cleanup()
-        _ = updateCurrentGrade()
         updateProgress()
-        updateMaxGrade()
+        updateMaxGrade(scores: scores)
+        _ = updateCurrentGrade(scores: scores)
     }
     
-    func updateCurrentGrade()-> Int{
+    func updateCurrentGrade(scores: [Int])-> Int{
         //update current grade!
-        var currentgrade = 0
-        var sum = 0
-        var weight = 0
-        for a in assessments{
-            sum += a.score ?? 0
-            weight += a.worth ?? 0
+        //TODO: MATHS IS WRONG IDIOT!
+        print(weights)
+        var currentgrade:Int = 0
+//        var sumOf = 0
+//        var weight = 0
+        for i in 0..<scores.count{
+            currentgrade += (scores[i]/100)*100//*(self.weights[i])
         }
-        if weight > 0{
-            currentgrade = sum/weight*100
-        }else{
-            currentgrade = sum/100*100
-        }
+//        for a in assessments{
+//            //sum += a.score ?? 0
+//            weight += a.worth ?? 0
+//        }
+//        sumOf = scores.reduce(0, { $0 + $1 })
+//        if weight > 0{
+//            currentgrade = sumOf/weight*100
+//        }else{
+//            currentgrade = sumOf/100*100
+//        }
+        print("current grade calc: \(currentgrade)")
         selectedSubject.current_grade = currentgrade
         databaseController?.updateSubject(subject: selectedSubject, fieldName: "current_grade", newValue: currentgrade)
         
@@ -144,7 +160,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         return currentgrade
     }
     
-    func updateMaxGrade(){
+    func updateMaxGrade(scores: [Int]){
         //update current grade!
         //var maxgrade = 100
         var sum = 0
@@ -161,10 +177,15 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     
     func updateProgress(){
         //update current grade!
+        weights = []
+        let a_x = assessments
         var progress = 0
         //var sum = 0
         for a in assessments{
-            progress += a.worth ?? 0
+            weights.append(a.worth ?? 0)
+            if a.score ?? 0 > 0{
+                progress += a.worth ?? 0
+            }
         }
         selectedSubject.progress = progress
         databaseController?.updateSubject(subject: selectedSubject, fieldName: "progress", newValue: progress)
@@ -271,9 +292,9 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
             let assessment = assessments[indexPath.row]
             assessmentCell.scoreTextField.text = String(assessment.score ?? 0 )
             assessmentCell.nameLabel.text = assessment.name
-            assessmentCell.worthLabel.text = String(assessment.worth ?? 0 )
+            let x = String(assessment.worth ?? 0 )
+            assessmentCell.worthLabel.text = "Worth: \(x)%"
             print(assessment.name)
-            
             //}
             
             
@@ -286,7 +307,8 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
             progressCell.awakeFromNib()
             return progressCell
         default:
-            let buttonCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_BUTTON, for: indexPath)
+            let buttonCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_BUTTON, for: indexPath) as! ButtonCollectionViewCell
+            buttonCell.delegate = self
             return buttonCell
         }
     }
@@ -295,12 +317,19 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         //let screenSize:CGFloat = UIScreen.main.bounds.width
         let section = indexPath.section
         let screenSize = collectionView.bounds.width - 10
-        if section == SECTION_INFO{
-            return CGSize(width: screenSize, height: 200)
-        }else if section == SECTION_PROGRESS{
+        switch section {
+        case SECTION_INFO:
             return CGSize(width: screenSize, height: 100)
+        case SECTION_ASSESSMENT:
+            return CGSize(width: screenSize, height: 50)
+        case SECTION_BUTTON:
+            return CGSize(width: screenSize, height: 50)
+        case SECTION_PROGRESS:
+            return CGSize(width: screenSize, height: 100)
+        default:
+            return CGSize(width: screenSize, height: 100)
+
         }
-        return CGSize(width: screenSize, height: 50.0)
     }
         
 
@@ -366,8 +395,8 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
                     //cell.isHighlighted = false
                     cell.unhighlightCell()
                 }
-            
-            }
+            collectionView.reloadData()
+        }
     }
     
     /*

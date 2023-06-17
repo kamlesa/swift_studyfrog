@@ -23,7 +23,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         //print(subject.progress)
         progressView.setProgress(1.0, animated: false)
         progressView.progress = Float(subject.progress ?? 0)/100
-        textView.text = "You have current progressed \(subject.progress ?? 0)% through the semester. Keep up the hard work!"
+        textView.text = "You have currently progressed \(subject.progress ?? 0)% through the semester. Keep up the hard work!"
     }
     
 }

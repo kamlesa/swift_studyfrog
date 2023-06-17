@@ -116,7 +116,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
     */
     
     func getAssessments(subjectName: String){
-        var x: [Assessment] = []
+        //var x: [Assessment] = []
         subjectsRef = database.collection("subjects")
         subjectsRef?.whereField("name", isEqualTo: subjectName).addSnapshotListener {
             (querySnapshot, error) in
@@ -130,6 +130,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
     }
         
     func parseNewVersion(snapshot: QueryDocumentSnapshot){
+        currentSubjectA = []
         //var x: [Assessment] = []
         if let aReferences = snapshot.data()["assessments"] as? [DocumentReference] {
             for reference in aReferences {

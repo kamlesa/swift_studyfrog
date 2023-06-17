@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var inspoQuoteTextView: UITextView!
     
+    @IBOutlet weak var massiveTextView: UITextView!
     
     
     override func viewDidLoad() {
@@ -22,10 +23,11 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         imageView.image = UIImage(named: "frogBanner")
         inspoQuoteTextView.isEditable = false
-        inspoQuoteTextView.text = "TESTING 123"
+        inspoQuoteTextView.text = "It takes two hands to clap!"
         inspoQuoteTextView.textAlignment = NSTextAlignment.center
         //indicator.startAnimating()
         //callAsync()
+        //massiveTextView.text = ""
     }
     
     // MARK: - Quotes API

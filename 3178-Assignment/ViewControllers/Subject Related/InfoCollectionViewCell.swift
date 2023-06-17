@@ -20,6 +20,10 @@ class InfoCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         //let subject = delegate?.selectedSubject
+        //let screenWidth = UIScreen.main.bounds.width -  10
+        //let originalFrame = nameLabel.frame
+        //let labelFrame = CGRect(x: originalFrame.origin.x, y: originalFrame.origin.y, width: screenWidth, height: originalFrame.size.height)
+        //nameLabel.frame = labelFrame
         nameLabel.text = subject.name
         nameLabel.textAlignment = .left
         goalGradeLabel.textAlignment = .right
