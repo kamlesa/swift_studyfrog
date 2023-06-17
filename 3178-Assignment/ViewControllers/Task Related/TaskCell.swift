@@ -19,10 +19,11 @@ protocol TaskCellDelegate: AnyObject {
 class TaskCell: UITableViewCell {
     
     @IBOutlet weak var deadlineButton: UIButton!
-    @IBOutlet weak var subjectLabel: UILabel!
+    //@IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var completionSlider: UISlider!
     weak var delegate: TaskCellDelegate?
+    var previousSliderValue: Float = 0
     var row: Int = 0
     //var originalDate: Date = Date()
     
@@ -33,6 +34,7 @@ class TaskCell: UITableViewCell {
         // Initialization code
         row = indexPath?.row ?? 0
         //delegate?.cellRow
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,30 +48,36 @@ class TaskCell: UITableViewCell {
         //update the todo with the progress assigned by user =)
         let sliderValue = completionSlider.value
         delegate?.todoProgress(row: row, progress: sliderValue)
+        sliderColourChange(sliderValue: sliderValue)
+        if sliderValue > previousSliderValue && sliderValue > 99{
+            //if the progress is 95+ we see if they want to mark the test as completed!
+            _ = delegate?.todoComplete(row: indexPath?.row ?? 0)
+        }
+        previousSliderValue = sliderValue
+    }
+    
+    
+    func sliderColourChange(sliderValue: Float){
         
-        //the point of these if statements is to change the colour of the progress bar! for funsies.!
+        // Example color with reduced opacity
+
         if sliderValue < 30{
-            completionSlider.tintColor = UIColor(named:"DefaultRed")
+            completionSlider.tintColor = UIColor(named:"DefaultRed")?.withAlphaComponent(0.5)
         }
         
         if sliderValue > 30 && sliderValue < 60{
-            completionSlider.tintColor = UIColor(named:"DefaultOrange")
+            completionSlider.tintColor = UIColor(named:"DefaultOrange")?.withAlphaComponent(0.5)
             
-        }else if completionSlider.value > 60 && completionSlider.value < 98 {
-            completionSlider.tintColor = UIColor(named:"DefaultYellow")
+        }else if sliderValue > 60 && completionSlider.value < 98 {
+            completionSlider.tintColor = UIColor(named:"DefaultYellow")?.withAlphaComponent(0.5)
             
-        }else if completionSlider.value > 95{
-            completionSlider.tintColor = UIColor(named:"DefaultGreen")
-            
-            //if the progress is 95+ we see if they want to mark the test as completed!
-            _ = delegate?.todoComplete(row: indexPath?.row ?? 0)
-           
-            //else do nothing!?
+        }else if sliderValue > 95{
+            completionSlider.tintColor = UIColor(named:"DefaultGreen")?.withAlphaComponent(0.5)
         }
     }
     
     @IBAction func buttonClicked(_ sender: UIButton) {
-        delegate?.cellRow = row
+        delegate?.cellRow = indexPath?.row ?? 0
         delegate?.deadlineChange()
         //guard let viewController = viewController
         //TasksTableViewController.performSegue(withIdentifier: "updateDeadline", sender: Any?.self)

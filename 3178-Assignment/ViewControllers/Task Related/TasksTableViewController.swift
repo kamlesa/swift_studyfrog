@@ -59,7 +59,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         var result = false
         let todo = todoList[row]
         let name = todo.name
-        let alertController = UIAlertController(title: "Have you completed this Task?", message: "\(name ?? "")", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Complete: \(name ?? "")", message: "Would you like to mark this task as completed?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Yes!", style: .default, handler: { (action: UIAlertAction!) in
             self.todoRemove(row: row)
             result = true
@@ -114,7 +114,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         let todo = todoList[indexPath.row]
         // Configure the cell...
         //var content = cell.defaultContentConfiguration()
-        cell.subjectLabel.text = "^-^" //TODO: remove this part of cell.
+        //cell.subjectLabel.text = "^-^" //TODO: remove this part of cell.
         cell.taskLabel.text = (todo.name)
         cell.delegate = self
         //cell.selectionStyle = UITableViewCellSelectionStyleNone
@@ -148,10 +148,11 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
         cell.deadlineButton.setTitle(deadline, for: .normal)
         cell.deadlineButton.addTarget(cell, action: #selector(cell.buttonClicked(_:)), for: .touchUpInside)
         //progress slider:
-        cell.completionSlider.value = todo.progress
+        
         cell.completionSlider.minimumValue = 0
         cell.completionSlider.maximumValue = 100
-        
+        cell.completionSlider.value = todo.progress
+        cell.sliderColourChange(sliderValue: todo.progress)
         return cell
     }
     
@@ -202,6 +203,27 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
     }
     */
 
+    @IBAction func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let point = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: point) {
+                    let cell = tableView.cellForRow(at: indexPath) as! TaskCell
+                    //cell.highlightCell()
+                let alertController = UIAlertController(title: "Delete Task", message: "Are you sure you want to delete \(cell.taskLabel.text ?? "this task")?", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {_ in
+                        let row = indexPath.row
+                        self.databaseController?.deleteTodo(todo: self.todoList[row])
+                        self.tableView.reloadData()
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                    //cell.isHighlighted = false
+                    //cell.unhighlightCell()
+                }
+            
+            }
+    }
+    
     
     // MARK: - Navigation
 
@@ -217,7 +239,7 @@ class TasksTableViewController: UITableViewController, DatabaseListener, TaskCel
             let todo = todoList[cellRow]
             destination.row = cellRow
             destination.originalDate = todo.deadline ?? Date()
-            
+            destination.delegate = self
         }
     }
     

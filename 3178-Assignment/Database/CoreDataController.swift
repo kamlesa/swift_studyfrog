@@ -118,6 +118,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     func updateProgress(todo: ToDo, progress: Float) {
         print(todo.progress)
+        /*
         let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
         let context = persistentContainer.viewContext
         if let todoName = todo.name {
@@ -136,12 +137,44 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         } catch {
             print("Error updating object: \(error)")
         }
+         */
+        
+        guard let managedObjectContext = todo.managedObjectContext else {
+                print("Failed to retrieve managed object context.")
+                return
+            }
+            
+            // Update the deadline property of the ToDo object
+            todo.progress = progress
+            
+            // Save the changes to persist the updated data
+            do {
+                try managedObjectContext.save()
+                print("ToDo progress updated successfully.")
+            } catch let error as NSError {
+                print("Failed to update ToDo progress: \(error.localizedDescription)")
+            }
         print(todo.progress)
         //todo.progress = progress
     }
     
     func updateDeadline(todo: ToDo, deadline: Date) {
-        todo.deadline = deadline
+        //todo.deadline = deadline
+        guard let managedObjectContext = todo.managedObjectContext else {
+                print("Failed to retrieve managed object context.")
+                return
+            }
+            
+            // Update the deadline property of the ToDo object
+            todo.deadline = deadline
+            
+            // Save the changes to persist the updated data
+            do {
+                try managedObjectContext.save()
+                print("ToDo deadline updated successfully.")
+            } catch let error as NSError {
+                print("Failed to update ToDo deadline: \(error.localizedDescription)")
+            }
     }
     
     
@@ -152,7 +185,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         if todoFetchedResultsController == nil {
             let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
             //TODO: IF YOU GET TIME - UPDATE THIS TO DISPLAY IN DATE ORDER INSTEAD.
-            let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            //let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            let nameSortDescriptor = NSSortDescriptor(key: "deadline", ascending: true)
             fetchRequest.sortDescriptors = [nameSortDescriptor]
             todoFetchedResultsController = NSFetchedResultsController<ToDo>(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
             todoFetchedResultsController?.delegate = self

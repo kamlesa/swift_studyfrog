@@ -22,12 +22,15 @@ class NewDeadlineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //datePicker.date = Date()
+        datePicker.date = originalDate
+        //datePicker.isHighlighted
         // Do any additional setup after loading the view.
     }
     
     @IBAction func updateDeadline(_ sender: Any) {
         let d = datePicker.date
         delegate?.newDeadline(deadline: d, row: row)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     /*
