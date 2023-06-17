@@ -82,6 +82,7 @@ class GradesTableViewController: UITableViewController, DatabaseListener {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSubject = subjectList[indexPath.row] //subjectList[indexPath.row].code ?? "FAIL"
+        databaseController?.getAssessments(subjectName: selectedSubject.name ?? "")
         subjectIndex = indexPath.row
         performSegue(withIdentifier: "subjectDetails", sender: Any?.self)
     }

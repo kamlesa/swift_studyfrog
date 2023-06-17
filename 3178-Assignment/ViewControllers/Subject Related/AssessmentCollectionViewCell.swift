@@ -22,19 +22,20 @@ class AssessmentCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-//        nameLabel.text = "Name"
-//        worthLabel.text = "Worth: 100%"
-//        scoreTextField.text = "9"
-        
-        /*
-        self.nameLabel.text = assessment.name
-        self.worthLabel.text = "Worth: \(assessment.worth)"
-        self.scoreTextField.text = String(assessment.score ?? 0)
-        */
-        
     }
     
-
+    func highlightCell() {
+        // Update the cell's appearance to indicate selection
+        self.contentView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
+        // You can also modify other visual properties as needed
+    }
+        
+    // Method to unhighlight the cell
+    func unhighlightCell() {
+        // Reset the cell's appearance to the default
+        self.contentView.backgroundColor = UIColor.systemBackground
+        // You can revert other visual properties to their original state
+    }
 
 }
 

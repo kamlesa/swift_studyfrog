@@ -1358,6 +1358,7 @@
                                     <outlet property="nameLabel" destination="4BV-VF-GI9" id="kBm-Dz-Gk5"/>
                                     <outlet property="scoreTextField" destination="EVW-Rl-ICX" id="jyX-6C-ogT"/>
                                     <outlet property="worthLabel" destination="q7H-uF-yhs" id="Mwo-Lu-6pm"/>
+                                    <outletCollection property="gestureRecognizers" destination="bEC-HN-tck" appends="YES" id="mVg-O6-VRp"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="assessmentCell1" id="Qwa-pp-mW5">
@@ -1540,6 +1541,11 @@
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yi-0o-EMH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bEC-HN-tck">
+                    <connections>
+                        <action selector="handleLongPress:" destination="Oii-Qe-M9K" id="2Gu-Km-Pag"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-460" y="1599"/>
         </scene>
@@ -1707,7 +1713,7 @@
         <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="115"/>
         <image name="tray.full.fill" catalog="system" width="128" height="88"/>
         <namedColor name="AccentColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DefaultBlue">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

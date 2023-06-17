@@ -53,13 +53,12 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        
-
-        setAssessments()
         _ = updateCurrentGrade()
         updateMaxGrade()
         updateProgress()
-
+        
+        //let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        //collectionView.addGestureRecognizer(longPressGesture)
 
         // Do any additional setup after loading the view.
     }
@@ -73,6 +72,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
+        databaseController?.getAssessments(subjectName: selectedSubject.name ?? "")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -171,45 +171,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         self.collectionView.reloadData()
     }
     
-    func fetchAssessment(i: Int) -> Assessment {
-        let documentReference: DocumentReference = selectedSubject.assessments[i]
-        var assessment:Assessment = Assessment()
-        documentReference.getDocument { (document, error) in
-            if let error = error {
-                print("Error fetching document: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let document = document, document.exists else {
-                print("Document does not exist")
-                return
-            }
-            
-            do {
-                // Convert the document data to your custom object type
-                let object = try document.data(as: Assessment.self)
-                // You can now use the object
-                print("Fetched object: \(object)")
-                self.assessments.append(object)
-                
-            } catch {
-                print("Error decoding document: \(error.localizedDescription)")
-            }
-            
-        }
-        return assessment
-    }
     
-    func setAssessments() {
-        //var a:[Assessment] = []
-        assessments = []
-        for i in 0..<selectedSubject.assessments.count{
-            //let x = await fetchAssessment(i: i)
-            //a.append(x)
-            _ = fetchAssessment(i: i)
-        }
-        //self.assessments = a
-    }
     
 
 
@@ -222,6 +184,7 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
     
     func onSubjectChange(change: DatabaseChange, subjects: [Subject]) {
         selectedSubject = subjects[subjectIndex]
+        assessments = databaseController?.currentSubjectA ?? []
         //assessments = subjAssessments
         self.collectionView.reloadData()
     }
@@ -298,13 +261,22 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
             return infoCell
         case SECTION_ASSESSMENT:
             let assessmentCell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_ASSESSMENT, for: indexPath) as! AssessmentCollectionViewCell
-            if assessments.count >= 1{
-                let assessment = assessments[indexPath.row]
-                assessmentCell.scoreTextField.text = String(assessment.score ?? 0 )
-                assessmentCell.nameLabel.text = assessment.name
-                assessmentCell.worthLabel.text = String(assessment.worth ?? 0 )
+            print(selectedSubject.name)
+            //assessments = databaseController?.getAssessments(subjectName: selectedSubject.name ?? "") ?? []
+            print(indexPath.row)
+            //if assessments.count >= 1{
+            guard assessments.indices.contains(indexPath.row) else{
+                return assessmentCell
             }
-            assessmentCell.awakeFromNib()
+            let assessment = assessments[indexPath.row]
+            assessmentCell.scoreTextField.text = String(assessment.score ?? 0 )
+            assessmentCell.nameLabel.text = assessment.name
+            assessmentCell.worthLabel.text = String(assessment.worth ?? 0 )
+            print(assessment.name)
+            
+            //}
+            
+            
             return assessmentCell
         case SECTION_PROGRESS:
             //let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskCell
@@ -330,11 +302,9 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         }
         return CGSize(width: screenSize, height: 50.0)
     }
-    
-    //MARK: attempt at arranging cells..
-    
+        
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
 
     
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -359,9 +329,15 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         }
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let cell = collectionView.cellForItem(at: indexPath) as! AssessmentCollectionViewCell
-        cell.nameLabel.text = "Changed !"
+        //cell.highlightCell()
+        //cell.isHighlighted = true
+        /*
+        let cell = collectionView.cellForItem(at: indexPath) as! AssessmentCollectionViewCell
+        //cell.nameLabel.text = "Changed !"
         let alertController = UIAlertController(title: "Delete Assessment", message: "Are you sure you want to delete \(cell.nameLabel.text ?? "this assessmnet")?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {_ in
             let row = indexPath.row
@@ -369,9 +345,31 @@ class SubjectCollectionViewController: UICollectionViewController, UICollectionV
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
         self.present(alertController, animated: true, completion: nil)
+         */
     }
     
-
+    
+    
+    @IBAction func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+                let point = sender.location(in: collectionView)
+                if let indexPath = collectionView.indexPathForItem(at: point) {
+                    let cell = collectionView.cellForItem(at: indexPath) as! AssessmentCollectionViewCell
+                    cell.highlightCell()
+                    let alertController = UIAlertController(title: "Delete Assessment", message: "Are you sure you want to delete \(cell.nameLabel.text ?? "this assessment")?", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {_ in
+                        let row = indexPath.row
+                        self.databaseController?.deleteAssessment(assessment: self.assessments[row])
+                    }))
+                    alertController.addAction(UIAlertAction(title: "Cancel", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                    //cell.isHighlighted = false
+                    cell.unhighlightCell()
+                }
+            
+            }
+    }
+    
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {

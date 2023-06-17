@@ -21,7 +21,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
     var assessmentList: [Assessment] = []
     var subjectList: [Subject] = []
     var defaultSubject: Subject
-    var currentSubject: Subject
+    var currentSubjectA: [Assessment] = []
     
     var authController: Auth
     var database: Firestore
@@ -37,7 +37,7 @@ class FirebaseController: NSObject, FirebaseProtocol {
         assessmentList = [Assessment]()
         subjectList = [Subject]()
         defaultSubject = Subject()
-        currentSubject = Subject()
+        //currentSubject = Subject()
         
         super.init()
         
@@ -114,6 +114,33 @@ class FirebaseController: NSObject, FirebaseProtocol {
         }
     }
     */
+    
+    func getAssessments(subjectName: String){
+        var x: [Assessment] = []
+        subjectsRef = database.collection("subjects")
+        subjectsRef?.whereField("name", isEqualTo: subjectName).addSnapshotListener {
+            (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot, let subjectSnapshot = querySnapshot.documents.first else {
+                print("Error getting assessments")
+                return
+            }
+            self.parseNewVersion(snapshot: subjectSnapshot)
+        }
+        //return x
+    }
+        
+    func parseNewVersion(snapshot: QueryDocumentSnapshot){
+        //var x: [Assessment] = []
+        if let aReferences = snapshot.data()["assessments"] as? [DocumentReference] {
+            for reference in aReferences {
+                if let a = getAssessmentByID(reference.documentID){
+                    self.currentSubjectA.append(a)
+                }
+            }
+        }
+        //return x
+    }
+    
     func parseAssessmentsSnapshot(snapshot: QuerySnapshot){
         snapshot.documentChanges.forEach { (change) in
             var assessment: Assessment

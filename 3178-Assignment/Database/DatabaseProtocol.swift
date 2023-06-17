@@ -59,7 +59,7 @@ protocol FirebaseProtocol: AnyObject {
     func removeListener(listener: DatabaseListener)
     
     var defaultSubject: Subject {get}
-    var currentSubject: Subject {get set}
+    var currentSubjectA: [Assessment] {get set}
     //subject:
     func addSubject(name: String, code: String, goal_grade: Int) -> Subject
     func deleteSubject(subject: Subject)
@@ -70,5 +70,5 @@ protocol FirebaseProtocol: AnyObject {
     func deleteAssessment(assessment: Assessment)
     func addAssessmentToSubject(assessment: Assessment, subject: Subject) -> Bool
     func updateAssessment(assessment: Assessment, fieldName: String, newValue: Any)
-
+    func getAssessments(subjectName: String)
  }
